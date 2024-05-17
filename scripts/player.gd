@@ -3,6 +3,7 @@ extends CharacterBody2D
 #custom signal, after taken damage
 signal took_damage
 
+var shieldsup : bool = false
 var speed = 300
 
 @onready var rocket_container = $RocketContainer
@@ -61,6 +62,7 @@ func _on_shield_recharge_timer_timeout():
 	shieldup()
 
 func shieldup() -> void:
+	shieldsup = true
 	var shield_instance = SHIELD.instantiate()
 	# add instance of shield as child to player
 	add_child(shield_instance)
@@ -70,15 +72,6 @@ func shieldup() -> void:
 	shield_instance.connect("shield_down", _on_shield_down)
 	
 func _on_shield_down():
+	shieldsup = false
 	ShieldRechargeTimer.start()
-
-
-
-
-
-
-
-
-
-
-
+	

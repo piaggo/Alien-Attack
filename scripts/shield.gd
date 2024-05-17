@@ -19,5 +19,4 @@ func ShieldsDown():
 func ShieldsUp():
 	print("Shield up!")
 	emit_signal("shield_up")
-	ShieldsUpSound.play()
-	
+	ShieldsUpSound.play()	
