@@ -36,7 +36,6 @@ func _physics_process(delta):
 	
 	#better
 	global_position = global_position.clamp(Vector2(0,0), windowsize)
-
 	
 func shoot():
 	#create instance of scene
@@ -47,10 +46,8 @@ func shoot():
 	rocket_instance.global_position.y = global_position.y
 	pewpew.play()
 	
-
 func take_damage():
 	emit_signal("took_damage")
-	
-	
+		
 func die():
 	queue_free()

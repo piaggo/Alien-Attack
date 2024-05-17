@@ -11,7 +11,6 @@ func die():
 	emit_signal("died")
 	queue_free()
 
-
 #Player = body
 func _on_body_entered(body):
 	if body.has_method("take_damage"):

@@ -22,7 +22,6 @@ func spawn_enemy():
 	#add_child(enemy_instance)
 	
 
-
 func _on_follow_path_timer_timeout():
 	spawn_path_enemy() # Replace with function body.
 
