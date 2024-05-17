@@ -28,4 +28,9 @@ position = Vector2(1350, 675)
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="FollowPathTimer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="FollowPathTimer" to="." method="_on_follow_path_timer_timeout"]

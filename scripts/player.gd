@@ -5,6 +5,7 @@ signal took_damage
 
 var  speed = 300
 @onready var rocket_container = $RocketContainer
+@onready var pewpew = $LaserSound
 
 const ROCKET = preload("res://scenes/rocket.tscn")
 
@@ -44,6 +45,7 @@ func shoot():
 	rocket_container.add_child(rocket_instance)
 	rocket_instance.global_position.x = global_position.x + 80
 	rocket_instance.global_position.y = global_position.y
+	pewpew.play()
 	
 
 func take_damage():
