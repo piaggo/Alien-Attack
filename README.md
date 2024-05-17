@@ -3,6 +3,6 @@
 
 ## Movement
 
-`wasd` - Move the Spaceship
+`w,a,s,d` - move the Spaceship
 
 `spacebar` or `left mouse button` to shoot
