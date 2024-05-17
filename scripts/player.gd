@@ -71,7 +71,9 @@ func shieldup() -> void:
 	#Listen for Signal from Shield to go down, then start recharge Timer
 	shield_instance.connect("shield_down", _on_shield_down)
 	
-func _on_shield_down():
-	shieldsup = false
+func _on_shield_down() -> void:
+	shieldsup = false	
 	ShieldRechargeTimer.start()
-	
+
+func get_shield_status() -> bool:
+	return shieldsup

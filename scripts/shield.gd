@@ -12,7 +12,7 @@ func _on_area_entered(area):
 
 func ShieldsDown():
 	print("Shield down!")
-	emit_signal("shield_down")	
+	emit_signal("shield_down")
 	ShieldsDownSound.play()
 	queue_free()
 
