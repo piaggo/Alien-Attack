@@ -24,10 +24,7 @@ func _on_player_took_damage():
 	hud.set_lives_label(lives)
 	if lives <= 0:
 		player.die()
-		
-		
 		await get_tree().create_timer(1.5).timeout
-		
 		var gos = GAME_OVER_SCREEN.instantiate()
 		gos.set_score(score)
 		ui.add_child(gos)
