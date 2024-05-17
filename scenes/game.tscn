@@ -12,6 +12,7 @@
 size = Vector2(100, 873)
 
 [node name="Game" type="Node2D"]
+position = Vector2(0, -1)
 script = ExtResource("1_wnldx")
 
 [node name="UI" type="CanvasLayer" parent="."]

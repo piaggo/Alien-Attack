@@ -3,11 +3,14 @@ extends CharacterBody2D
 #custom signal, after taken damage
 signal took_damage
 
-var  speed = 300
+var speed = 300
+
 @onready var rocket_container = $RocketContainer
 @onready var pewpew = $LaserSound
+@onready var ShieldRechargeTimer = $ShieldRechargeTimer
 
 const ROCKET = preload("res://scenes/rocket.tscn")
+const SHIELD = preload("res://scenes/shield.tscn")
 
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
@@ -51,3 +54,31 @@ func take_damage():
 		
 func die():
 	queue_free()
+	
+#Recharge Shields
+func _on_shield_recharge_timer_timeout():
+	print("Timeout")
+	shieldup()
+
+func shieldup() -> void:
+	var shield_instance = SHIELD.instantiate()
+	# add instance of shield as child to player
+	add_child(shield_instance)
+	shield_instance.global_position.x += 10
+	shield_instance.ShieldsUp()
+	#Listen for Signal from Shield to go down, then start recharge Timer
+	shield_instance.connect("shield_down", _on_shield_down)
+	
+func _on_shield_down():
+	ShieldRechargeTimer.start()
+
+
+
+
+
+
+
+
+
+
+

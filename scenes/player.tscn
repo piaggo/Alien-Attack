@@ -63,3 +63,10 @@ shape = SubResource("CapsuleShape2D_goy1l")
 
 [node name="LaserSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_oiidw")
+
+[node name="ShieldRechargeTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="ShieldRechargeTimer" to="." method="_on_shield_recharge_timer_timeout"]

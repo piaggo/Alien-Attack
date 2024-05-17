@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2gkrqb0hkjaa"]
+
+[ext_resource type="Texture2D" uid="uid://duvxmvd2t4lj7" path="res://assets/textures/shield1.png" id="1_fwiro"]
+[ext_resource type="Script" path="res://scripts/shield.gd" id="1_h0guk"]
+[ext_resource type="AudioStream" uid="uid://7fml6ml0u1g8" path="res://assets/audio/sfx_shieldDown.ogg" id="3_n5keh"]
+[ext_resource type="AudioStream" uid="uid://pcoamt04idq1" path="res://assets/audio/sfx_shieldUp.ogg" id="4_nmqqn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4t6ar"]
+radius = 73.0
+
+[node name="shield" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_h0guk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fwiro")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 19)
+shape = SubResource("CircleShape2D_4t6ar")
+
+[node name="ShieldsDownSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_n5keh")
+
+[node name="ShieldsUpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nmqqn")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
