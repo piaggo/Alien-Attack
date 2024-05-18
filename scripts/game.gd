@@ -30,9 +30,9 @@ func _on_player_took_damage():
 
 #Spawn and kill spawned Enemies
 func _on_enemy_spawner_enemy_spawned(enemy_instance):
-	enemy_instance.connect("died", _on_enemy_died)
 	add_child(enemy_instance)
-
+	enemy_instance.connect("died", _on_enemy_died)
+	
 func _on_enemy_spawner_path_enemy_spawned(path_enemy_scene_instance):
 	add_child(path_enemy_scene_instance)
 	path_enemy_scene_instance.enemy.connect("died", _on_enemy_died)
