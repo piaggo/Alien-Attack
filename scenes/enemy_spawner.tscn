@@ -32,5 +32,28 @@ autostart = true
 wait_time = 4.0
 autostart = true
 
+[node name="AsteroidSpawnPositions" type="Node2D" parent="."]
+
+[node name="Top" type="Node2D" parent="AsteroidSpawnPositions"]
+
+[node name="SpawnPos_010" type="Marker2D" parent="AsteroidSpawnPositions/Top"]
+position = Vector2(939, -48)
+
+[node name="SpawnPos_09" type="Marker2D" parent="AsteroidSpawnPositions/Top"]
+position = Vector2(558, -48)
+
+[node name="Bottom" type="Node2D" parent="AsteroidSpawnPositions"]
+
+[node name="SpawnPos_07" type="Marker2D" parent="AsteroidSpawnPositions/Bottom"]
+position = Vector2(1099, 808)
+
+[node name="SpawnPos_08" type="Marker2D" parent="AsteroidSpawnPositions/Bottom"]
+position = Vector2(714, 808)
+
+[node name="AsteroidTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="FollowPathTimer" to="." method="_on_follow_path_timer_timeout"]
+[connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]

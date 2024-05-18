@@ -49,3 +49,13 @@ func _on_enemy_died():
 # Delete Enemies behind Player
 func _on_deathzone_area_entered(area):
 	area.queue_free()
+
+
+# Spawn and kill spawned Asteroids
+func _on_enemy_spawner_asteroid_spawned(asteroid_instance):
+	add_child(asteroid_instance)
+	asteroid_instance.connect("died", _on_asteroid_died)
+
+
+func _on_asteroid_died():
+	pass
