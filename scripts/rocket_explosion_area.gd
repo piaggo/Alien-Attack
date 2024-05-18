@@ -1,7 +1,7 @@
 extends Area2D
 
 
-func _process(delta):
+func _process(_delta):
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
 

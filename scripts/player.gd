@@ -29,14 +29,14 @@ const SHIELD = preload("res://scenes/shield.tscn")
 const LASER = preload("res://scenes/laser.tscn")
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("laser"):
 		shoot_laser()
 	if Input.is_action_just_pressed("rocket") && numberofrockets > 0:
 		shoot_rocket()
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Move Player
 	velocity = Vector2(0, 0)
 
