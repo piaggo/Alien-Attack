@@ -9,6 +9,7 @@ signal died
 
 func _physics_process(delta):
 	global_position += directionVector * delta
+	rotation_degrees += 15 * delta
 
 
 func die():
