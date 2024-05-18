@@ -82,6 +82,7 @@ explode_rockets={
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemy"
-2d_physics/layer_3="rocket"
+2d_physics/layer_3="player projectiles"
 2d_physics/layer_4="deathzone"
 2d_physics/layer_5="asteroids"
+2d_physics/layer_6="enemy projectiles"
