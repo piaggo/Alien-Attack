@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0q42auay2203"]
+[gd_scene load_steps=11 format=3 uid="uid://c0q42auay2203"]
 
 [ext_resource type="Texture2D" uid="uid://t7l1de01ia7s" path="res://assets/textures/bg.png" id="1_eo3xe"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_wnldx"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://yfyg0je08hvn" path="res://scenes/enemy_spawner.tscn" id="3_n1ed2"]
 [ext_resource type="AudioStream" uid="uid://61y3mpqi73e3" path="res://assets/audio/hit.wav" id="6_0ggj1"]
 [ext_resource type="AudioStream" uid="uid://cgqfebag6htae" path="res://assets/audio/explode.wav" id="7_gsote"]
+[ext_resource type="AudioStream" uid="uid://n2fvypkeseua" path="res://assets/audio/sfx_lose.ogg" id="8_y8qlr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyalr"]
 size = Vector2(100, 1514)
@@ -57,6 +58,13 @@ stream = ExtResource("6_0ggj1")
 stream = ExtResource("7_gsote")
 volume_db = -24.0
 
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_y8qlr")
+
+[connection signal="boostdownSignal" from="Player" to="." method="_on_player_boostdown_signal"]
+[connection signal="boostupSignal" from="Player" to="." method="_on_player_boostup_signal"]
+[connection signal="shielddownSignal" from="Player" to="." method="_on_player_shielddown_signal"]
+[connection signal="shieldupSignal" from="Player" to="." method="_on_player_shieldup_signal"]
 [connection signal="took_damage" from="Player" to="." method="_on_player_took_damage"]
 [connection signal="asteroid_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_asteroid_spawned"]
 [connection signal="enemy_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_enemy_spawned"]

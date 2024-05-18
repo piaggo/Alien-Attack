@@ -3,7 +3,6 @@ extends Area2D
 signal died
 
 @export var speed = 200
-
 @export var directionVector = Vector2(-90, -90)
 
 

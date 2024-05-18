@@ -69,4 +69,10 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
+[node name="BoostRechargeTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
 [connection signal="timeout" from="ShieldRechargeTimer" to="." method="_on_shield_recharge_timer_timeout"]
+[connection signal="timeout" from="BoostRechargeTimer" to="." method="_on_boost_recharge_timer_timeout"]
