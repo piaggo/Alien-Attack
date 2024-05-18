@@ -20,3 +20,7 @@ func die():
 func _on_body_entered(body):
 	body.take_damage()
 	die()
+
+
+func is_asteroid() -> bool:
+	return true

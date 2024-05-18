@@ -4,6 +4,13 @@ extends Control
 @onready var lives_left = $LivesLeft
 @onready var shield = $Shield
 @onready var boost = $Boost
+@onready var rockets = $Rockets
+
+
+func _ready():
+	var rocket_array = rockets.get_children()
+	for count in 2:
+		rocket_array[count + 1].visible = false
 
 
 func set_score_label(new_score: int) -> void:
@@ -28,3 +35,11 @@ func boost_icon_blink(number_of_blinks: float, duration: float):
 	for blink in number_of_blinks:
 		await get_tree().create_timer(blinkspersecond).timeout
 		boost.visible = !boost.visible
+
+
+func set_rockets_visible(number: int) -> void:
+	var rocket_array = rockets.get_children()
+	for count in 3:
+		rocket_array[count].visible = false
+	for count in number:
+		rocket_array[count].visible = true

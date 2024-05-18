@@ -81,3 +81,14 @@ func _on_player_boostup_signal():
 func _on_player_boostdown_signal():
 	hud.set_boost_icon_visibility(false)
 	hud.boost_icon_blink(60, 5)
+
+
+# ROCKETS
+func _on_player_rocket_shot():
+	hud.set_rockets_visible(player.numberofrockets)
+	print("PEWPEW: " + str(player.numberofrockets))
+
+
+func _on_player_rocket_reload():
+	print("RELOADING: " + str(player.numberofrockets))
+	hud.set_rockets_visible(player.numberofrockets)

@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://ntn1c11rs7ng"]
+
+[ext_resource type="Script" path="res://scripts/rocket_explosion_area.gd" id="1_xghit"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ene2w"]
+radius = 250.0
+
+[sub_resource type="Gradient" id="Gradient_hs3wj"]
+offsets = PackedFloat32Array(0, 0.389474, 1)
+colors = PackedColorArray(0.992988, 0.982872, 0.532573, 1, 0.651041, 0.427143, 0.135946, 1, 0.886275, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_duerf"]
+gradient = SubResource("Gradient_hs3wj")
+
+[sub_resource type="Curve" id="Curve_lb81a"]
+min_value = 1.0
+max_value = 10.0
+_data = [Vector2(0.00458715, 7.62637), 0.0, 0.0, 0, 0, Vector2(1, 4.46154), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ssb8g"]
+curve = SubResource("Curve_lb81a")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fmd5w"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(250, 250, 0)
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 30.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_ssb8g")
+color_ramp = SubResource("GradientTexture1D_duerf")
+
+[node name="RocketExplosionArea" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_xghit")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ene2w")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_fmd5w")
+lifetime = 0.5
+explosiveness = 0.51
+fixed_fps = 60
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

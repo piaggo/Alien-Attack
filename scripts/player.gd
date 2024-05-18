@@ -1,11 +1,13 @@
 extends CharacterBody2D
 
-#custom signal, after taken damage
+# custom signals
 signal took_damage
 signal shieldupSignal
 signal boostupSignal
 signal shielddownSignal
 signal boostdownSignal
+signal rocketShot
+signal rocketReload
 
 var shieldsup: bool = false
 var boostup: bool = false
@@ -13,20 +15,25 @@ var speed = 300
 var maxspeed = 300
 var maxboostspeedmultiplier = 2.0
 var currentboostspeedmultiplier = 1.0
+@export var numberofrockets = 1
 
 @onready var rocket_container = $RocketContainer
 @onready var pewpew = $LaserSound
 @onready var SpeedBoostSound = $SpeedBoostSound
-@onready var ShieldRechargeTimer = $ShieldRechargeTimer
-@onready var BoostRechargeTimer = $BoostRechargeTimer
+@onready var ShieldRechargeTimer = $Timers/ShieldRechargeTimer
+@onready var BoostRechargeTimer = $Timers/BoostRechargeTimer
+@onready var RocketReloadTimer = $Timers/RocketReloadTimer
 
 const ROCKET = preload("res://scenes/rocket.tscn")
 const SHIELD = preload("res://scenes/shield.tscn")
+const LASER = preload("res://scenes/laser.tscn")
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("shoot"):
-		shoot()
+	if Input.is_action_just_pressed("laser"):
+		shoot_laser()
+	if Input.is_action_just_pressed("rocket") && numberofrockets > 0:
+		shoot_rocket()
 
 
 func _physics_process(delta):
@@ -44,7 +51,7 @@ func _physics_process(delta):
 		velocity.y = speed * 1.2
 	if Input.is_action_pressed("move_up"):
 		velocity.y = -speed * 1.2
-	print(str(speed))
+
 	move_and_slide()
 
 	# Keep Player in Screen
@@ -58,7 +65,20 @@ func _physics_process(delta):
 	global_position = global_position.clamp(Vector2(0, 0), windowsize)
 
 
-func shoot():
+func shoot_laser():
+	#create instance of scene
+	var laser_instance = LASER.instantiate()
+	rocket_container.add_child(laser_instance)
+	laser_instance.global_position.x = global_position.x + 80
+	laser_instance.global_position.y = global_position.y
+	pewpew.play()
+
+
+func shoot_rocket():
+	if numberofrockets == 3:
+		RocketReloadTimer.start()
+	numberofrockets -= 1
+	emit_signal("rocketShot")
 	#create instance of scene
 	var rocket_instance = ROCKET.instantiate()
 	# add instance as child to game
@@ -133,3 +153,11 @@ func reduce_speed(steps: int, increments: float):
 func bosst_end() -> void:
 	BoostRechargeTimer.start()
 	speed = maxspeed
+
+
+func _on_rocket_reload_timer_timeout():
+	if numberofrockets < 3:
+		numberofrockets += 1
+		emit_signal("rocketReload")
+	else:
+		RocketReloadTimer.stop()

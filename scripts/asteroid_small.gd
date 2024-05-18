@@ -2,7 +2,7 @@ extends Area2D
 
 signal died
 
-@export var speed = 200
+@export var speed = 300
 @export var directionVector = Vector2(-90, -90)
 
 
@@ -19,3 +19,7 @@ func die():
 func _on_body_entered(body):
 	body.take_damage()
 	die()
+
+
+func is_asteroid() -> bool:
+	return true

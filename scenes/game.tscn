@@ -63,6 +63,8 @@ stream = ExtResource("8_y8qlr")
 
 [connection signal="boostdownSignal" from="Player" to="." method="_on_player_boostdown_signal"]
 [connection signal="boostupSignal" from="Player" to="." method="_on_player_boostup_signal"]
+[connection signal="rocketReload" from="Player" to="." method="_on_player_rocket_reload"]
+[connection signal="rocketShot" from="Player" to="." method="_on_player_rocket_shot"]
 [connection signal="shielddownSignal" from="Player" to="." method="_on_player_shielddown_signal"]
 [connection signal="shieldupSignal" from="Player" to="." method="_on_player_shieldup_signal"]
 [connection signal="took_damage" from="Player" to="." method="_on_player_took_damage"]

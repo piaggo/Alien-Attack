@@ -64,19 +64,27 @@ shape = SubResource("CapsuleShape2D_goy1l")
 
 [node name="LaserSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_oiidw")
-
-[node name="ShieldRechargeTimer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
-autostart = true
-
-[node name="BoostRechargeTimer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
-autostart = true
+volume_db = -24.0
 
 [node name="SpeedBoostSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_e3box")
 
-[connection signal="timeout" from="ShieldRechargeTimer" to="." method="_on_shield_recharge_timer_timeout"]
-[connection signal="timeout" from="BoostRechargeTimer" to="." method="_on_boost_recharge_timer_timeout"]
+[node name="Timers" type="Node" parent="."]
+
+[node name="ShieldRechargeTimer" type="Timer" parent="Timers"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="BoostRechargeTimer" type="Timer" parent="Timers"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="RocketReloadTimer" type="Timer" parent="Timers"]
+wait_time = 15.0
+autostart = true
+
+[connection signal="timeout" from="Timers/ShieldRechargeTimer" to="." method="_on_shield_recharge_timer_timeout"]
+[connection signal="timeout" from="Timers/BoostRechargeTimer" to="." method="_on_boost_recharge_timer_timeout"]
+[connection signal="timeout" from="Timers/RocketReloadTimer" to="." method="_on_rocket_reload_timer_timeout"]
