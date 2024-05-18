@@ -63,7 +63,6 @@ func die():
 
 #Recharge Shields
 func _on_shield_recharge_timer_timeout():
-	print("Timeout")
 	shieldup()
 
 

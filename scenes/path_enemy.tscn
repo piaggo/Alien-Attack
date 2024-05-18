@@ -10,14 +10,15 @@ _data = {
 point_count = 6
 
 [node name="PathEnemy" type="Path2D"]
-position = Vector2(93.4817, -1.80028)
-scale = Vector2(0.944718, 0.960864)
+position = Vector2(14.809, -0.502125)
+scale = Vector2(0.991242, 0.989085)
 curve = SubResource("Curve2D_nduie")
 script = ExtResource("1_y0dai")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2(1691, -45.9989)
 rotation = -0.318502
+scale = Vector2(1, 1)
 progress = 2161.33
 loop = false
 

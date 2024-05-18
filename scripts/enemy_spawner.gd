@@ -20,12 +20,10 @@ func _ready():
 func _on_timer_timeout():
 	spawn_enemy()
 	number_of_enemies_spawned += 1
-	print("number_of_enemies_spawned: " + str(number_of_enemies_spawned))
 	if number_of_enemies_spawned >= 10 && SpawnTimer.wait_time > 0.3:
 		SpawnTimer.wait_time *= 0.9
 		FollowPathTimer.wait_time *= 0.9
 		number_of_enemies_spawned = 0
-		print("SpawnTimer: " + str(SpawnTimer.wait_time))
 
 
 func spawn_enemy():
@@ -48,9 +46,9 @@ func _on_follow_path_timer_timeout():
 
 func spawn_path_enemy():
 	var path_enemy_instance = PATH_ENEMY.instantiate()
-	
+
 	# set random speed for enemy
 	path_enemy_instance.speed_modifier = randf_range(0.8, 1.5)
-	
+
 	# Tell Game enemy was spawned
 	emit_signal("path_enemy_spawned", path_enemy_instance)
