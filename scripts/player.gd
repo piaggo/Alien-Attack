@@ -3,7 +3,7 @@ extends CharacterBody2D
 #custom signal, after taken damage
 signal took_damage
 
-var shieldsup : bool = false
+var shieldsup: bool = false
 var speed = 300
 
 @onready var rocket_container = $RocketContainer
@@ -13,34 +13,36 @@ var speed = 300
 const ROCKET = preload("res://scenes/rocket.tscn")
 const SHIELD = preload("res://scenes/shield.tscn")
 
+
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
+
 func _physics_process(delta):
-	
-	# Move Player	
-	velocity= Vector2(0,0)
+	# Move Player
+	velocity = Vector2(0, 0)
 	if Input.is_action_pressed("move_right"):
 		velocity.x = speed
 	if Input.is_action_pressed("move_left"):
 		velocity.x = -speed
 	if Input.is_action_pressed("move_down"):
-		velocity.y = speed*1.5
+		velocity.y = speed * 1.5
 	if Input.is_action_pressed("move_up"):
-		velocity.y = -speed*1.5
+		velocity.y = -speed * 1.5
 	move_and_slide()
-	
-	# Keep Player in Screen	
+
+	# Keep Player in Screen
 	var windowsize = get_viewport_rect().size
-	
+
 	#good
 	#global_position.x = clampf(global_position.x, 0, windowsize.x)
 	#global_position.y = clampf(global_position.y, 0, windowsize.y)
-	
+
 	#better
-	global_position = global_position.clamp(Vector2(0,0), windowsize)
-	
+	global_position = global_position.clamp(Vector2(0, 0), windowsize)
+
+
 func shoot():
 	#create instance of scene
 	var rocket_instance = ROCKET.instantiate()
@@ -49,17 +51,21 @@ func shoot():
 	rocket_instance.global_position.x = global_position.x + 80
 	rocket_instance.global_position.y = global_position.y
 	pewpew.play()
-	
+
+
 func take_damage():
 	emit_signal("took_damage")
-		
+
+
 func die():
 	queue_free()
-	
+
+
 #Recharge Shields
 func _on_shield_recharge_timer_timeout():
 	print("Timeout")
 	shieldup()
+
 
 func shieldup() -> void:
 	shieldsup = true
@@ -70,10 +76,12 @@ func shieldup() -> void:
 	shield_instance.ShieldsUp()
 	#Listen for Signal from Shield to go down, then start recharge Timer
 	shield_instance.connect("shield_down", _on_shield_down)
-	
+
+
 func _on_shield_down() -> void:
-	shieldsup = false	
+	shieldsup = false
 	ShieldRechargeTimer.start()
+
 
 func get_shield_status() -> bool:
 	return shieldsup
