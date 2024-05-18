@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://1508jndsj5v"]
+[gd_scene load_steps=11 format=3 uid="uid://1508jndsj5v"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0nv4h"]
 [ext_resource type="Texture2D" uid="uid://cqucpraxwn0qb" path="res://assets/textures/player_ship.png" id="1_swedt"]
 [ext_resource type="AudioStream" uid="uid://hwqxqw2to0ge" path="res://assets/audio/sfx_laser2.wav" id="3_oiidw"]
+[ext_resource type="AudioStream" uid="uid://do2chr02jt012" path="res://assets/audio/sfx_twoTone.ogg" id="4_e3box"]
 
 [sub_resource type="Gradient" id="Gradient_paj0w"]
 offsets = PackedFloat32Array(0, 0.477273, 1)
@@ -73,6 +74,9 @@ autostart = true
 wait_time = 10.0
 one_shot = true
 autostart = true
+
+[node name="SpeedBoostSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_e3box")
 
 [connection signal="timeout" from="ShieldRechargeTimer" to="." method="_on_shield_recharge_timer_timeout"]
 [connection signal="timeout" from="BoostRechargeTimer" to="." method="_on_boost_recharge_timer_timeout"]

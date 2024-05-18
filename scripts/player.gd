@@ -16,6 +16,7 @@ var currentboostspeedmultiplier = 1.0
 
 @onready var rocket_container = $RocketContainer
 @onready var pewpew = $LaserSound
+@onready var SpeedBoostSound = $SpeedBoostSound
 @onready var ShieldRechargeTimer = $ShieldRechargeTimer
 @onready var BoostRechargeTimer = $BoostRechargeTimer
 
@@ -104,6 +105,8 @@ func _on_boost_recharge_timer_timeout() -> void:
 
 
 func boost() -> void:
+	boostup = false
+	SpeedBoostSound.play()
 	# Set speed to boost speed, then slowly reduce back to normal
 	increase_speed(2, 0.5)
 	reduce_speed(5, 0.2)
@@ -128,6 +131,5 @@ func reduce_speed(steps: int, increments: float):
 
 
 func bosst_end() -> void:
-	boostup = false
 	BoostRechargeTimer.start()
 	speed = maxspeed
