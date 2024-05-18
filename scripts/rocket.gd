@@ -24,6 +24,6 @@ func _on_area_entered(area):
 
 func explode():
 	var explosion_instance = ROCKET_EXPLOSION_AREA.instantiate()
-	get_parent().add_child(explosion_instance)
+	get_parent().call_deferred("add_child", explosion_instance)
 	explosion_instance.global_position = global_position
 	queue_free()
