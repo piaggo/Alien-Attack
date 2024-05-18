@@ -29,7 +29,7 @@ func _on_player_took_damage():
 		ui.add_child(gos)
 
 
-#Spawn and kill spawned Enemies
+# Spawn and kill spawned Enemies
 func _on_enemy_spawner_enemy_spawned(enemy_instance):
 	add_child(enemy_instance)
 	enemy_instance.connect("died", _on_enemy_died)

@@ -29,12 +29,16 @@ func _on_timer_timeout():
 
 
 func spawn_enemy():
-	#get random spawn position
+	# get random spawn position and instantiate
 	var spawn_positions_array = SpawnPositions.get_children()
 	var random_spawn_position = spawn_positions_array.pick_random()
-
 	var enemy_instance = ENEMY.instantiate()
 	enemy_instance.global_position = random_spawn_position.global_position
+
+	# set random speed for enemy
+	enemy_instance.speed = randi_range(enemy_instance.speed * 0.8, enemy_instance.speed * 1.5)
+
+	# Tell Game enemy was spawned
 	emit_signal("enemy_spawned", enemy_instance)
 
 
@@ -44,4 +48,9 @@ func _on_follow_path_timer_timeout():
 
 func spawn_path_enemy():
 	var path_enemy_instance = PATH_ENEMY.instantiate()
+	
+	# set random speed for enemy
+	path_enemy_instance.speed_modifier = randf_range(0.8, 1.5)
+	
+	# Tell Game enemy was spawned
 	emit_signal("path_enemy_spawned", path_enemy_instance)
