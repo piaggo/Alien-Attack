@@ -6,7 +6,7 @@ Base of the game is ALIEN-ATTACK from `Kaan Alpar`'s Course at [gamedev.tv](http
 
 ## To Play
 
-Download the "Alien-attack.exe" for windows and have fun
+Download the "Alien-attack.exe" from the latest Release and have fun
 
 ## Controls
 
