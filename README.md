@@ -1,6 +1,6 @@
 # Alien Attack
 
-Godot Tutorial Game - made to learn GODOT
+A Sidescroller Bullethell(light) Game - made to learn GODOT
 Base of the game is ALIEN-ATTACK from `Kaan Alpar` Course at [gamedev.tv](https://www.gamedev.tv/courses/godot-complete-2d)
 
 ## Movement
