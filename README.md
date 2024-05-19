@@ -8,17 +8,15 @@ Base of the game is ALIEN-ATTACK from `Kaan Alpar`'s Course at [gamedev.tv](http
 
 Download the "Alien-attack.exe" for windows and have fun
 
-## Movement
+## Controls
 
-`w,a,s,d` - move the Spaceship
-
-`left mouse button` - shoot Lasers
-
-`right mouse button` - shoot Rockets
-
-`e` - let Rockets eplode
-
-`shift` - boost (if ready)
+| Key | Command |
+| --- | --- |
+| <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> | Movement |
+| <kbd>`shift</kbd> | boost (if ready) |
+| <kbd>Left mouse button</kbd> | shoot Lasers |
+| <kbd>Right mouse button</kbd> | shoot Rockets |
+| <kbd>E</kbd> | let Rockets eplode |
 
 
 ## Made with
