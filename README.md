@@ -13,10 +13,10 @@ Download the "Alien-attack.exe" for windows and have fun
 | Key | Command |
 | --- | --- |
 | <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> | Movement |
-| <kbd>`shift</kbd> | boost (if ready) |
-| <kbd>Left mouse button</kbd> | shoot Lasers |
-| <kbd>Right mouse button</kbd> | shoot Rockets |
-| <kbd>E</kbd> | let Rockets eplode |
+| <kbd>Shift</kbd> | Boost (if ready) |
+| <kbd>Left mouse button</kbd> | Shoot Lasers |
+| <kbd>Right mouse button</kbd> | Shoot Rockets |
+| <kbd>E</kbd> | Let Rockets eplode |
 
 
 ## Made with
