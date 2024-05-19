@@ -23,3 +23,8 @@ func _on_body_entered(body):
 
 func is_asteroid() -> bool:
 	return true
+
+
+
+func _on_area_entered(area):
+	area.die()
