@@ -1,17 +1,23 @@
 extends Node2D
 
-var number_of_enemies_spawned = 0
-var number_of_asteroids_spawned = 0
-
 signal enemy_spawned(enemy_instance)
 signal asteroid_spawned(asteroid_instance)
 signal path_enemy_spawned(path_enemy_scene_instance)
+signal boss_spawned(boss_instance)
 
 const ENEMY = preload("res://scenes/enemy.tscn")
 const PATH_ENEMY = preload("res://scenes/path_enemy.tscn")
 const ASTEROID = preload("res://scenes/asteroid.tscn")
 const ASTEROID_SMALL = preload("res://scenes/asteroid_small.tscn")
+const MOTHERSHIP = preload("res://scenes/mothership.tscn")
 
+const DEFAULT_SPAWN_TIMER : int = 1
+const DEFAULT_SPAWN_PATH_TIMER : int = 4
+
+@export var allow_enemies_spawn : bool = true
+
+var number_of_enemies_spawned = 0
+var number_of_asteroids_spawned = 0
 var asteroid_array = [ASTEROID, ASTEROID_SMALL]
 var enemy_array = [ENEMY]
 
@@ -28,7 +34,8 @@ func _ready():
 
 
 func _on_timer_timeout():
-	spawn_enemy()
+	if allow_enemies_spawn:
+		spawn_enemy()
 
 	# Speed up enemy spawns over time!
 	number_of_enemies_spawned += 1
@@ -53,7 +60,8 @@ func spawn_enemy():
 
 
 func _on_follow_path_timer_timeout():
-	spawn_path_enemy()  # Replace with function body.
+	if allow_enemies_spawn:
+		spawn_path_enemy()
 
 
 func spawn_path_enemy():
@@ -95,3 +103,12 @@ func _on_asteroid_timer_timeout():
 	if number_of_asteroids_spawned >= 10 && AsteroidSpawnTimer.wait_time > 0.6:
 		AsteroidSpawnTimer.wait_time *= 0.9
 		number_of_asteroids_spawned = 0
+
+func spawn_boss():	
+	var boss_instance = MOTHERSHIP.instantiate()
+	emit_signal("boss_spawned",boss_instance)
+	
+
+func reset_spawn_timers():
+	SpawnTimer.wait_time = DEFAULT_SPAWN_TIMER
+	FollowPathTimer.wait_time = DEFAULT_SPAWN_PATH_TIMER

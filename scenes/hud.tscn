@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddh7xwyrrwk0x"]
+[gd_scene load_steps=12 format=3 uid="uid://ddh7xwyrrwk0x"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_3krv1"]
 [ext_resource type="FontFile" uid="uid://dnm1nwr8ekeff" path="res://assets/font/Kenney Blocks.ttf" id="1_kytpv"]
@@ -16,6 +16,20 @@ font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_qk3gx"]
 font_size = 52
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oy5dv"]
+bg_color = Color(0.152941, 0.168627, 0.188235, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqlvl"]
+bg_color = Color(0.768627, 0.113725, 0.239216, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -109,3 +123,21 @@ offset_right = 100.0
 offset_bottom = 702.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_d2xtr")
+
+[node name="BossHealthBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -324.0
+offset_right = 465.0
+offset_bottom = -291.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_oy5dv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lqlvl")
+step = 1.0
+show_percentage = false

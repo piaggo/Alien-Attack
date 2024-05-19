@@ -20,6 +20,8 @@ func _on_visible_notifier_screen_exited():
 func _on_area_entered(area):
 	if area.has_method("die"):
 		explode()
+	if area.has_method("boss_take_damage"):
+		area.boss_take_damage(5)
 
 
 func explode():

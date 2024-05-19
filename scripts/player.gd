@@ -15,6 +15,8 @@ var speed = 300
 var maxspeed = 300
 var maxboostspeedmultiplier = 2.0
 var currentboostspeedmultiplier = 1.0
+var invul_frames : bool = false
+
 @export var numberofrockets = 1
 
 @onready var rocket_container = $RocketContainer
@@ -23,6 +25,7 @@ var currentboostspeedmultiplier = 1.0
 @onready var ShieldRechargeTimer = $Timers/ShieldRechargeTimer
 @onready var BoostRechargeTimer = $Timers/BoostRechargeTimer
 @onready var RocketReloadTimer = $Timers/RocketReloadTimer
+@onready var BlinkAnimation = $BlinkAnimation
 
 const ROCKET = preload("res://scenes/rocket.tscn")
 const SHIELD = preload("res://scenes/shield.tscn")
@@ -89,7 +92,12 @@ func shoot_rocket():
 
 
 func take_damage():
-	emit_signal("took_damage")
+	if !invul_frames:
+		emit_signal("took_damage")
+	invul_frames = true
+	BlinkAnimation.play("blink")
+	await get_tree().create_timer(1).timeout
+	invul_frames = false
 
 
 func die():

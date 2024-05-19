@@ -3,12 +3,15 @@ extends Node2D
 var lives = 3
 var score = 0
 
+
 @onready var player = $Player
 @onready var hud = $UI/HUD
 @onready var ui = $UI
 @onready var enemy_hit_sound = $EnemyHitSound
 @onready var player_hit_sound = $PlayerHitSound
 @onready var game_over_sound = $GameOverSound
+@onready var EnemySpawner = $EnemySpawner
+@onready var BossTimer = $BossTimer
 
 const GAME_OVER_SCREEN = preload("res://scenes/game_over_screen.tscn")
 
@@ -18,6 +21,7 @@ func _ready():
 	hud.set_lives_label(lives)
 	hud.set_boost_icon_visibility(false)
 	hud.set_shield_icon_visibility(false)
+	hud.set_boss_bar_visible(false)
 
 
 func _on_player_took_damage():
@@ -86,9 +90,36 @@ func _on_player_boostdown_signal():
 # ROCKETS
 func _on_player_rocket_shot():
 	hud.set_rockets_visible(player.numberofrockets)
-	print("PEWPEW: " + str(player.numberofrockets))
 
 
 func _on_player_rocket_reload():
-	print("RELOADING: " + str(player.numberofrockets))
 	hud.set_rockets_visible(player.numberofrockets)
+
+
+func _on_boss_timer_timeout():
+	EnemySpawner.allow_enemies_spawn = false
+	await get_tree().create_timer(1.5).timeout
+	EnemySpawner.spawn_boss()
+
+
+func _on_enemy_spawner_boss_spawned(boss_instance):
+	add_child(boss_instance)
+	boss_instance.connect("defeated", _on_boss_defeated)
+	boss_instance.connect("boss_took_damage", _on_boss_took_damage.bind(boss_instance))
+	hud.set_boss_bar_visible(true)
+	hud.set_boss_bar_max(boss_instance.maxhealth)
+	hud.set_boss_bar_value(boss_instance.health)
+	
+func _on_boss_defeated():
+	score += 3000
+	hud.set_score_label(score)
+	await get_tree().create_timer(1.5).timeout
+	EnemySpawner.allow_enemies_spawn = true
+	EnemySpawner.reset_spawn_timers()
+	BossTimer.start()
+	hud.set_boss_bar_visible(false)
+	lives += 1
+
+func _on_boss_took_damage(boss_instance):
+	hud.set_boss_bar_value(boss_instance.health)
+	pass

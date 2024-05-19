@@ -26,6 +26,6 @@ func is_asteroid() -> bool:
 	return true
 
 
-
 func _on_area_entered(area):
-	area.die()
+	if area.has_method("die"):
+		area.die()

@@ -1,10 +1,11 @@
 extends Area2D
 
 @export var velocity = 600
+@export var vector = Vector2(600,0)
 
 
 func _physics_process(delta):
-	global_position.x -= velocity * delta
+	global_position -= vector * delta
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

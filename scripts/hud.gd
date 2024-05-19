@@ -5,6 +5,7 @@ extends Control
 @onready var shield = $Shield
 @onready var boost = $Boost
 @onready var rockets = $Rockets
+@onready var BossHealthBar = $BossHealthBar
 
 
 func _ready():
@@ -31,7 +32,6 @@ func set_boost_icon_visibility(new_visibility: bool) -> void:
 
 func boost_icon_blink(number_of_blinks: float, duration: float):
 	var blinkspersecond: float = duration / number_of_blinks
-	print("blinkspersecond: " + str(blinkspersecond))
 	for blink in number_of_blinks:
 		await get_tree().create_timer(blinkspersecond).timeout
 		boost.visible = !boost.visible
@@ -43,3 +43,12 @@ func set_rockets_visible(number: int) -> void:
 		rocket_array[count].visible = false
 	for count in number:
 		rocket_array[count].visible = true
+
+func set_boss_bar_visible(new_visibility: bool) -> void:
+	BossHealthBar.visible = new_visibility
+	
+func set_boss_bar_max(new_max: int) -> void:
+	BossHealthBar.max_value = new_max
+	
+func set_boss_bar_value(new_value: int) -> void:
+	BossHealthBar.value = new_value

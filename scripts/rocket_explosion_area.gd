@@ -9,3 +9,5 @@ func _process(_delta):
 func _on_area_entered(area):
 	if area.has_method("die"):
 		area.die()
+	if area.has_method("boss_take_damage"):
+		area.boss_take_damage(5)

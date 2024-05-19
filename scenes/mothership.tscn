@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://q7vg3170owuy"]
+
+[ext_resource type="Script" path="res://scripts/mothership.gd" id="1_tgfps"]
+[ext_resource type="Texture2D" uid="uid://k3lquhqeuwef" path="res://assets/textures/ships/bigger/spaceShips_005.png" id="2_47feu"]
+[ext_resource type="AudioStream" uid="uid://61y3mpqi73e3" path="res://assets/audio/hit.wav" id="3_mbc0b"]
+
+[node name="Mothership" type="Area2D"]
+position = Vector2(1462, 368)
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_tgfps")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_47feu")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-145, -167, -150, -128, -97, -82, -102, -49, -49, -25, -48, 27, -100, 43, -100, 81, -150, 125, -145, 167, -85, 171, -27, 99, 1, 99, 11, 92, 37, 126, 60, 112, 142, 134, 154, 115, 120, 98, 118, 62, 107, 51, 65, 51, 65, -51, 112, -51, 119, -65, 119, -95, 153, -120, 141, -135, 64, -110, 38, -125, 10, -90, 2, -100, -25, -98, -88, -173)
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mbc0b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

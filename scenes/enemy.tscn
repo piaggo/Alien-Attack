@@ -1,14 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1m1h4ghokm57"]
+[gd_scene load_steps=4 format=3 uid="uid://b1m1h4ghokm57"]
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_d6rl6"]
-[ext_resource type="Texture2D" uid="uid://b3y5y5m5idjb5" path="res://assets/textures/enemy_ship.png" id="2_v1g6e"]
+[ext_resource type="Texture2D" uid="uid://b4kndsp6efc3o" path="res://assets/textures/ships/bigger/spaceShips_002.png" id="2_fpcki"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6qwv"]
-radius = 118.0
-height = 508.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_321cu"]
-radius = 60.0
+radius = 124.0
+height = 272.0
 
 [node name="Enemy" type="Area2D"]
 scale = Vector2(0.25, 0.25)
@@ -18,28 +15,17 @@ script = ExtResource("1_d6rl6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
-rotation = -1.5708
-texture = ExtResource("2_v1g6e")
+rotation = 1.5708
+texture = ExtResource("2_fpcki")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = -1.5708
+position = Vector2(12, 0)
 shape = SubResource("CapsuleShape2D_n6qwv")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(48, -124)
-rotation = -1.5708
-shape = SubResource("CircleShape2D_321cu")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(48, 116)
-rotation = -1.5708
-shape = SubResource("CircleShape2D_321cu")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -9,7 +9,8 @@ signal shield_up
 
 func _on_area_entered(area):
 	ShieldsDown()
-	area.die()
+	if area.has_method("die"):
+		area.die()
 
 
 func ShieldsDown():

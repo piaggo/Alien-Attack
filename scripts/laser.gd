@@ -18,6 +18,9 @@ func _on_area_entered(area):
 	if area.has_method("die"):
 		explode()
 		area.die()
+	if area.has_method("boss_take_damage"):
+		explode()
+		area.boss_take_damage(1)
 
 
 func explode():

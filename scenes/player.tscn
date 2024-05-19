@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://1508jndsj5v"]
+[gd_scene load_steps=14 format=3 uid="uid://1508jndsj5v"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0nv4h"]
-[ext_resource type="Texture2D" uid="uid://cqucpraxwn0qb" path="res://assets/textures/player_ship.png" id="1_swedt"]
+[ext_resource type="Texture2D" uid="uid://bcem4wudnfnh5" path="res://assets/textures/ships/playerBlue1.png" id="2_uk76i"]
 [ext_resource type="AudioStream" uid="uid://hwqxqw2to0ge" path="res://assets/audio/sfx_laser2.wav" id="3_oiidw"]
 [ext_resource type="AudioStream" uid="uid://do2chr02jt012" path="res://assets/audio/sfx_twoTone.ogg" id="4_e3box"]
 
@@ -33,9 +33,44 @@ scale_max = 10.0
 scale_curve = SubResource("CurveTexture_rrnjl")
 color_ramp = SubResource("GradientTexture1D_2wrqc")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_goy1l"]
-radius = 32.0
-height = 98.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_fuwp5"]
+radius = 35.0571
+
+[sub_resource type="Animation" id="Animation_m2lc2"]
+resource_name = "blink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yw6jt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rdey0"]
+_data = {
+"RESET": SubResource("Animation_yw6jt"),
+"blink": SubResource("Animation_m2lc2")
+}
 
 [node name="Player" type="CharacterBody2D"]
 rotation = 1.57102
@@ -52,13 +87,14 @@ lifetime = 0.3
 fixed_fps = 60
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_swedt")
+rotation = 3.14159
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_uk76i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
 rotation = -1.57161
-shape = SubResource("CapsuleShape2D_goy1l")
+shape = SubResource("CircleShape2D_fuwp5")
 
 [node name="RocketContainer" type="Node" parent="."]
 
@@ -84,6 +120,11 @@ autostart = true
 [node name="RocketReloadTimer" type="Timer" parent="Timers"]
 wait_time = 15.0
 autostart = true
+
+[node name="BlinkAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rdey0")
+}
 
 [connection signal="timeout" from="Timers/ShieldRechargeTimer" to="." method="_on_shield_recharge_timer_timeout"]
 [connection signal="timeout" from="Timers/BoostRechargeTimer" to="." method="_on_boost_recharge_timer_timeout"]
