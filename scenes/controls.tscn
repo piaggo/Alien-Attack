@@ -1,11 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://8cavxehahlgp"]
+[gd_scene load_steps=14 format=3 uid="uid://8cavxehahlgp"]
 
 [ext_resource type="Script" path="res://scripts/controls.gd" id="1_tm7mp"]
 [ext_resource type="Texture2D" uid="uid://b0ky6l618pfx0" path="res://assets/textures/Controls/keyboard_arrows_all.png" id="2_ws7fq"]
 [ext_resource type="Texture2D" uid="uid://deig5qm772dbb" path="res://assets/textures/Controls/mouse_left.png" id="3_tfkgf"]
+[ext_resource type="Texture2D" uid="uid://byih415206fum" path="res://assets/textures/Controls/keyboard_space.png" id="4_dwkpi"]
 [ext_resource type="Texture2D" uid="uid://bfm7awcncnk86" path="res://assets/textures/Controls/keyboard_e.png" id="4_omr3a"]
 [ext_resource type="Texture2D" uid="uid://b4a7hsl1piqmk" path="res://assets/textures/Controls/mouse_right.png" id="4_s1n57"]
 [ext_resource type="Texture2D" uid="uid://bax1i501rvb8x" path="res://assets/textures/Controls/keyboard_shift.png" id="5_jtaxw"]
+[ext_resource type="Texture2D" uid="uid://dx22f0h2d7kxx" path="res://assets/textures/Controls/keyboard_r.png" id="6_3xp8f"]
 
 [sub_resource type="SystemFont" id="SystemFont_0do0m"]
 font_names = PackedStringArray("Impact")
@@ -85,9 +87,17 @@ text = "Shoot Laser"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("3_tfkgf")
+stretch_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_dwkpi")
 stretch_mode = 3
 
 [node name="seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
@@ -106,9 +116,17 @@ text = "Shoot Rockets"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer3/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_s1n57")
+stretch_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_3xp8f")
 stretch_mode = 3
 
 [node name="seperator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
