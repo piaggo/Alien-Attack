@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bunn0bxfmqbo1"]
+[gd_scene load_steps=7 format=3 uid="uid://bunn0bxfmqbo1"]
 
 [ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_60tvl"]
 
@@ -15,6 +15,12 @@ font_size = 64
 [sub_resource type="LabelSettings" id="LabelSettings_75ti4"]
 font_size = 48
 font_color = Color(0.266667, 0.709804, 0.745098, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_ocu10"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_kh4x5"]
+font_names = PackedStringArray("Impact")
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -79,13 +85,32 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -90.5
+offset_left = -207.0
 offset_top = -124.0
-offset_right = 90.5
+offset_right = -26.0
 offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = SubResource("SystemFont_ocu10")
 theme_override_font_sizes/font_size = 48
-text = "Retry"
+text = "RETRY"
+
+[node name="GiveUpButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = -124.0
+offset_right = 211.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("SystemFont_kh4x5")
+theme_override_font_sizes/font_size = 48
+text = "GIVE UP"
 
 [connection signal="pressed" from="Panel/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Panel/GiveUpButton" to="." method="_on_give_up_button_pressed"]

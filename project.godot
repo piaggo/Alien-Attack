@@ -13,13 +13,19 @@ config_version=5
 config/name="Alien-attack"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://assets/bitslix_splashscreen.png"
+boot_splash/fullsize=false
+config/icon="res://Bitslix_logo_small.svg"
+boot_splash/minimum_display_time=2500
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=3
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://pointer_b.png"
 
 [editor_plugins]
 
@@ -86,3 +92,7 @@ explode_rockets={
 2d_physics/layer_4="deathzone"
 2d_physics/layer_5="asteroids"
 2d_physics/layer_6="enemy projectiles"
+
+[rendering]
+
+anti_aliasing/quality/msaa_2d=2
