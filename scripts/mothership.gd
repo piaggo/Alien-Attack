@@ -3,7 +3,7 @@ extends Area2D
 signal defeated
 signal boss_took_damage
 
-@export var health = 5
+@export var health = 100
 @export var maxhealth = 100
 @export var hspeed = 200
 @export var vspeed = 80
