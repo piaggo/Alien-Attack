@@ -5,6 +5,21 @@
 [ext_resource type="AudioStream" uid="uid://61y3mpqi73e3" path="res://assets/audio/hit.wav" id="3_mbc0b"]
 [ext_resource type="PackedScene" uid="uid://d1ww6dh783b2j" path="res://scenes/retro_explosion_big.tscn" id="4_3c4qu"]
 
+[sub_resource type="Animation" id="Animation_dq8st"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_18muc"]
 resource_name = "blink"
 length = 2.0
@@ -19,21 +34,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.768627, 0.113725, 0.239216, 1), Color(0.768627, 0.113725, 0.239216, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_dq8st"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n7py6"]

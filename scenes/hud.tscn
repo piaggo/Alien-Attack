@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://dnm1nwr8ekeff" path="res://assets/font/Kenney Blocks.ttf" id="1_kytpv"]
 [ext_resource type="Texture2D" uid="uid://bsphrqs366vlc" path="res://assets/textures/orb.png" id="3_mfr35"]
 [ext_resource type="Texture2D" uid="uid://s8eb761euudq" path="res://assets/textures/powerupBlue_shield.png" id="4_dfyju"]
-[ext_resource type="Texture2D" uid="uid://dluckywg1pj6c" path="res://assets/textures/powerupBlue_bolt.png" id="5_l31wy"]
+[ext_resource type="Texture2D" uid="uid://cn4bxfo0dj428" path="res://assets/textures/powerupGreen_bolt.png" id="5_15stq"]
 [ext_resource type="Texture2D" uid="uid://dlkalw8hentlp" path="res://assets/textures/spaceMissiles_004.png" id="6_d2xtr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo4xk"]
@@ -90,7 +90,7 @@ offset_left = 85.0
 offset_top = 666.0
 offset_right = 125.0
 offset_bottom = 706.0
-texture = ExtResource("5_l31wy")
+texture = ExtResource("5_15stq")
 
 [node name="Rockets" type="Control" parent="."]
 anchors_preset = 0

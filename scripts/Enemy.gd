@@ -1,6 +1,6 @@
 extends Area2D
 
-signal died(killer : String)
+signal died(killer : String, deathPosition : Vector2)
 
 @export var speed = 200
 const ENEMY_LASER = preload("res://scenes/enemy_laser.tscn")
@@ -19,7 +19,7 @@ func die(killer : String) -> void:
 	sprite_2d.visible = false
 	RetroExplosion.emitting = true
 	shooting_allowed = false
-	emit_signal("died", killer)
+	emit_signal("died", killer, global_position)
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
 

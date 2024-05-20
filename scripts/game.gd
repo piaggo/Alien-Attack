@@ -10,11 +10,13 @@ var score = 0
 @onready var enemy_hit_sound = $Audio/EnemyHitSound
 @onready var player_hit_sound = $Audio/PlayerHitSound
 @onready var game_over_sound = $Audio/GameOverSound
+@onready var rocket_shot_sound = $Audio/RocketShotSound
+@onready var boss_spawn_sound = $Audio/BossSpawnSound
+@onready var live_up_sound = $Audio/LiveUpSound
 @onready var EnemySpawner = $EnemySpawner
 @onready var BossTimer = $BossTimer
 @onready var camera_2d = $Camera2D
-@onready var rocket_shot_sound = $Audio/RocketShotSound
-@onready var boss_spawn_sound = $Audio/BossSpawnSound
+@onready var pickup_spawner = $PickupSpawner
 
 var asteroidKillCount = 0
 
@@ -72,14 +74,17 @@ func _on_enemy_spawner_path_enemy_spawned(path_enemy_scene_instance):
 	path_enemy_scene_instance.enemy.connect("died", _on_enemy_died)
 
 
-func _on_enemy_died(killer):
+func _on_enemy_died(killer, deathPosition):
 	enemy_hit_sound.play()
 	if killer == "Player":
 		score += 100
 		hud.set_score_label(score)
+		if randi_range(0,100) >= 85:
+			pickup_spawner.spawnRandomPickup(deathPosition)
+
+
 	if killer == "Asteroid":
 		asteroidKillCount += 1
-		
 
 
 # Delete Enemies behind Player
@@ -120,6 +125,7 @@ func _on_player_rocket_shot():
 	hud.set_rockets_visible(player.numberofrockets)
 	rocket_shot_sound.play()
 
+
 func _on_player_rocket_reload():
 	hud.set_rockets_visible(player.numberofrockets)
 
@@ -140,21 +146,34 @@ func _on_enemy_spawner_boss_spawned(boss_instance):
 	hud.set_boss_bar_visible(true)
 	hud.set_boss_bar_max(boss_instance.maxhealth)
 	hud.set_boss_bar_value(boss_instance.health)
-	
-	
-	
+
+
 func _on_boss_defeated():
 	score += 3000
 	boss_spawn_sound.stop()
 	hud.set_score_label(score)
 	hud.set_boss_bar_visible(false)
+	pickup_spawner.spawnShield(Vector2(1200,300))
+	pickup_spawner.spawnBoost(Vector2(1150,400))
+	pickup_spawner.spawnLive(Vector2(1200,500))
+	pickup_spawner.spawnRocket(Vector2(1150,600))
 	await get_tree().create_timer(5).timeout
 	EnemySpawner.allow_enemies_spawn = true
 	EnemySpawner.reset_spawn_timers()
 	BossTimer.start()
-	lives += 1
 	hud.set_lives_label(lives)
+	
 
 func _on_boss_took_damage(boss_instance):
 	hud.set_boss_bar_value(boss_instance.health)
 	pass
+
+
+func liveup():
+	lives += 1
+	hud.set_lives_label(lives)
+	live_up_sound.play()
+
+
+func _on_player_live_up_signal():
+	liveup()

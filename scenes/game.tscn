@@ -1,15 +1,21 @@
-[gd_scene load_steps=13 format=3 uid="uid://c0q42auay2203"]
+[gd_scene load_steps=19 format=3 uid="uid://c0q42auay2203"]
 
 [ext_resource type="Texture2D" uid="uid://t7l1de01ia7s" path="res://assets/textures/bg.png" id="1_eo3xe"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_wnldx"]
 [ext_resource type="PackedScene" uid="uid://1508jndsj5v" path="res://scenes/player.tscn" id="2_5a3cq"]
 [ext_resource type="PackedScene" uid="uid://ddh7xwyrrwk0x" path="res://scenes/hud.tscn" id="2_koo4m"]
 [ext_resource type="PackedScene" uid="uid://yfyg0je08hvn" path="res://scenes/enemy_spawner.tscn" id="3_n1ed2"]
+[ext_resource type="PackedScene" uid="uid://b4osu8v57mxvj" path="res://scenes/pickup_spawner.tscn" id="6_0ames"]
 [ext_resource type="AudioStream" uid="uid://61y3mpqi73e3" path="res://assets/audio/hit.wav" id="6_0ggj1"]
 [ext_resource type="AudioStream" uid="uid://cgqfebag6htae" path="res://assets/audio/explode.wav" id="7_gsote"]
 [ext_resource type="AudioStream" uid="uid://n2fvypkeseua" path="res://assets/audio/sfx_lose.ogg" id="8_y8qlr"]
 [ext_resource type="AudioStream" uid="uid://clviy13hs4kvs" path="res://assets/audio/Rocketshot.ogg" id="9_1cfkv"]
 [ext_resource type="AudioStream" uid="uid://cmfg0xdff6wal" path="res://assets/audio/BossSpawn.ogg" id="10_ajfv8"]
+[ext_resource type="PackedScene" uid="uid://dw6uo0wut342c" path="res://scenes/schield_pickup.tscn" id="11_xv50h"]
+[ext_resource type="AudioStream" uid="uid://dj6r1oku47fg6" path="res://assets/audio/LiveUpSound.wav" id="12_et3tt"]
+[ext_resource type="PackedScene" uid="uid://6yip37rx4tux" path="res://scenes/boost_pickup.tscn" id="12_s0o0y"]
+[ext_resource type="PackedScene" uid="uid://d2enxwepgmpb8" path="res://scenes/rocket_pickup.tscn" id="15_18jx7"]
+[ext_resource type="PackedScene" uid="uid://dbo06daqig3tm" path="res://scenes/live_pickup.tscn" id="15_cyt46"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyalr"]
 size = Vector2(100, 1514)
@@ -37,6 +43,8 @@ stretch_mode = 1
 position = Vector2(140, 384)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_n1ed2")]
+
+[node name="PickupSpawner" parent="." instance=ExtResource("6_0ames")]
 
 [node name="BossTimer" type="Timer" parent="."]
 wait_time = 45.0
@@ -87,8 +95,25 @@ bus = &"SFX"
 stream = ExtResource("10_ajfv8")
 bus = &"Music"
 
+[node name="LiveUpSound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("12_et3tt")
+bus = &"SFX"
+
+[node name="LivePickup" parent="." instance=ExtResource("15_cyt46")]
+position = Vector2(460, 488)
+
+[node name="Boostpickup" parent="." instance=ExtResource("12_s0o0y")]
+position = Vector2(359, 461)
+
+[node name="RocketPickup" parent="." instance=ExtResource("15_18jx7")]
+position = Vector2(404, 368)
+
+[node name="SchieldPickup" parent="." instance=ExtResource("11_xv50h")]
+position = Vector2(331, 308)
+
 [connection signal="boostdownSignal" from="Player" to="." method="_on_player_boostdown_signal"]
 [connection signal="boostupSignal" from="Player" to="." method="_on_player_boostup_signal"]
+[connection signal="liveUpSignal" from="Player" to="." method="_on_player_live_up_signal"]
 [connection signal="rocketReload" from="Player" to="." method="_on_player_rocket_reload"]
 [connection signal="rocketShot" from="Player" to="." method="_on_player_rocket_shot"]
 [connection signal="shielddownSignal" from="Player" to="." method="_on_player_shielddown_signal"]

@@ -8,8 +8,8 @@ signal shielddownSignal
 signal boostdownSignal
 signal rocketShot
 signal rocketReload
+signal liveUpSignal
 
-var shieldsup: bool = false
 var boostup: bool = false
 var speed = 300
 var maxspeed = 300
@@ -22,10 +22,9 @@ var invul_frames : bool = false
 @onready var rocket_container = $RocketContainer
 @onready var pewpew = $LaserSound
 @onready var SpeedBoostSound = $SpeedBoostSound
-@onready var ShieldRechargeTimer = $Timers/ShieldRechargeTimer
-@onready var BoostRechargeTimer = $Timers/BoostRechargeTimer
 @onready var RocketReloadTimer = $Timers/RocketReloadTimer
 @onready var BlinkAnimation = $BlinkAnimation
+@onready var boost_pickup_sound = $BoostPickupSound
 
 const ROCKET = preload("res://scenes/rocket.tscn")
 const SHIELD = preload("res://scenes/shield.tscn")
@@ -104,31 +103,24 @@ func die():
 	queue_free()
 
 
-#Recharge Shields
-func _on_shield_recharge_timer_timeout():
-	shieldup()
-
-
 func shieldup() -> void:
-	shieldsup = true
 	var shield_instance = SHIELD.instantiate()
 	# add instance of shield as child to player
 	add_child(shield_instance)
 	shield_instance.global_position.x += 10
 	shield_instance.ShieldsUp()
-	#Listen for Signal from Shield to go down, then start recharge Timer
+	#Listen for Signal from Shield to go down
 	shield_instance.connect("shield_down", _on_shield_down)
 	emit_signal("shieldupSignal")
 
 
 func _on_shield_down() -> void:
-	shieldsup = false
-	ShieldRechargeTimer.start()
 	emit_signal("shielddownSignal")
 
 
-func _on_boost_recharge_timer_timeout() -> void:
+func boostready():
 	boostup = true
+	boost_pickup_sound.play()
 	emit_signal("boostupSignal")
 
 
@@ -159,7 +151,6 @@ func reduce_speed(steps: int, increments: float):
 
 
 func bosst_end() -> void:
-	BoostRechargeTimer.start()
 	speed = maxspeed
 
 
@@ -169,3 +160,12 @@ func _on_rocket_reload_timer_timeout():
 		emit_signal("rocketReload")
 	else:
 		RocketReloadTimer.stop()
+
+
+func rocketPickup():
+	numberofrockets += 1
+	emit_signal("rocketReload")
+
+func liveup() -> void:
+	emit_signal("liveUpSignal")
+	
