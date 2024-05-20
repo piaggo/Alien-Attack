@@ -56,7 +56,7 @@ position = Vector2(691.25, 1079)
 shape = SubResource("RectangleShape2D_t85fu")
 
 [node name="BossTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 45.0
 one_shot = true
 autostart = true
 

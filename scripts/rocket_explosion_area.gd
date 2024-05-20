@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var collision_shape_2d = $CollisionShape2D
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	collision_shape_2d.shape.radius += 5 
 	print(str(collision_shape_2d.shape.radius))
 	
