@@ -27,6 +27,11 @@ window/size/mode=3
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://pointer_b.png"
 
+[editor]
+
+movie_writer/movie_file="D:/godot/screencaptures/screencapture.avi"
+movie_writer/fps=144
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/SimpleTODO/plugin.cfg", "res://addons/colorpicker_presets/plugin.cfg")

@@ -28,8 +28,8 @@ emission_shape_scale = Vector3(50, 50, 0)
 emission_shape = 1
 emission_sphere_radius = 1.0
 direction = Vector3(5, 0, 0)
-orbit_velocity_max = 0.299
-radial_velocity_min = 392.52
+orbit_velocity_max = 1.0
+radial_velocity_min = 224.3
 radial_velocity_max = 448.6
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_ssb8g")
@@ -44,12 +44,15 @@ script = ExtResource("1_xghit")
 shape = SubResource("CircleShape2D_ene2w")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-amount = 1000
+emitting = false
+amount = 2000
 process_material = SubResource("ParticleProcessMaterial_fmd5w")
 lifetime = 0.5
+one_shot = true
 speed_scale = 1.55
-explosiveness = 0.51
+explosiveness = 0.5
 randomness = 0.39
 fixed_fps = 60
+trail_lifetime = 0.5
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

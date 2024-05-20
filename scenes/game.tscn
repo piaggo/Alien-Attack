@@ -38,6 +38,14 @@ position = Vector2(140, 384)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_n1ed2")]
 
+[node name="BossTimer" type="Timer" parent="."]
+wait_time = 45.0
+one_shot = true
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(642, 362)
+
 [node name="Deathzone" type="Area2D" parent="."]
 position = Vector2(-147, -21)
 collision_layer = 8
@@ -54,14 +62,6 @@ shape = SubResource("RectangleShape2D_t85fu")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Deathzone"]
 position = Vector2(691.25, 1079)
 shape = SubResource("RectangleShape2D_t85fu")
-
-[node name="BossTimer" type="Timer" parent="."]
-wait_time = 45.0
-one_shot = true
-autostart = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(642, 362)
 
 [node name="Audio" type="Node" parent="."]
 
@@ -98,5 +98,5 @@ bus = &"Music"
 [connection signal="boss_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_boss_spawned"]
 [connection signal="enemy_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_enemy_spawned"]
 [connection signal="path_enemy_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_path_enemy_spawned"]
-[connection signal="area_entered" from="Deathzone" to="." method="_on_deathzone_area_entered"]
 [connection signal="timeout" from="BossTimer" to="." method="_on_boss_timer_timeout"]
+[connection signal="area_entered" from="Deathzone" to="." method="_on_deathzone_area_entered"]
