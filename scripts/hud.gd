@@ -42,6 +42,8 @@ func set_rockets_visible(number: int) -> void:
 	for count in 3:
 		rocket_array[count].visible = false
 	for count in number:
+		if count > 2:
+			return
 		rocket_array[count].visible = true
 
 func set_boss_bar_visible(new_visibility: bool) -> void:

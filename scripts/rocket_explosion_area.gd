@@ -5,10 +5,11 @@ extends Area2D
 
 func _ready():
 	gpu_particles_2d.emitting = true
+	collision_shape_2d.shape.radius = 100
 	
 
-func _physics_process(_delta):
-	collision_shape_2d.shape.radius += 5
+func _physics_process(delta):
+	collision_shape_2d.shape.radius += 250 * delta
 	await get_tree().create_timer(0.4).timeout
 	queue_free()
 

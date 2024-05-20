@@ -16,6 +16,7 @@ var maxspeed = 300
 var maxboostspeedmultiplier = 2.0
 var currentboostspeedmultiplier = 1.0
 var invul_frames : bool = false
+var enable_auto_shoot : bool = false
 
 @export var numberofrockets = 1
 
@@ -26,6 +27,7 @@ var invul_frames : bool = false
 @onready var BlinkAnimation = $BlinkAnimation
 @onready var boost_pickup_sound = $BoostPickupSound
 
+
 const ROCKET = preload("res://scenes/rocket.tscn")
 const SHIELD = preload("res://scenes/shield.tscn")
 const LASER = preload("res://scenes/laser.tscn")
@@ -33,10 +35,13 @@ const LASER = preload("res://scenes/laser.tscn")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("laser"):
-		shoot_laser()
+		if !enable_auto_shoot:
+			shoot_laser()
 	if Input.is_action_just_pressed("rocket") && numberofrockets > 0:
 		shoot_rocket()
-
+	if Input.is_action_just_pressed("enable_autoshoot"):
+		enable_auto_shoot = !enable_auto_shoot
+	
 
 func _physics_process(_delta):
 	# Move Player
@@ -163,9 +168,16 @@ func _on_rocket_reload_timer_timeout():
 
 
 func rocketPickup():
-	numberofrockets += 1
-	emit_signal("rocketReload")
+	if numberofrockets < 3:
+		numberofrockets += 1
+		emit_signal("rocketReload")
 
 func liveup() -> void:
 	emit_signal("liveUpSignal")
 	
+
+
+
+func _on_laser_timer_timeout():
+	if enable_auto_shoot:
+		shoot_laser()

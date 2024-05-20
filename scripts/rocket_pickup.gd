@@ -1,7 +1,7 @@
 extends Area2D
 
 func _physics_process(delta):
-	position.x -= 30 * delta
+	position.x -= 50 * delta
 	pass
 
 func _on_body_entered(body):

@@ -15,3 +15,7 @@ func _on_show_controls_button_pressed():
 
 func _on_exit_button_pressed():
 	get_tree().quit()
+
+
+func _on_highscore_pressed():
+	get_tree().quit()

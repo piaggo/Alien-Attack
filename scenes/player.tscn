@@ -121,4 +121,9 @@ libraries = {
 stream = ExtResource("5_6xjwk")
 bus = &"SFX"
 
+[node name="LaserTimer" type="Timer" parent="."]
+wait_time = 0.15
+autostart = true
+
 [connection signal="timeout" from="Timers/RocketReloadTimer" to="." method="_on_rocket_reload_timer_timeout"]
+[connection signal="timeout" from="LaserTimer" to="." method="_on_laser_timer_timeout"]

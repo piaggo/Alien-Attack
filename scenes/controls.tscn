@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://8cavxehahlgp"]
+[gd_scene load_steps=19 format=3 uid="uid://8cavxehahlgp"]
 
 [ext_resource type="Script" path="res://scripts/controls.gd" id="1_tm7mp"]
 [ext_resource type="Texture2D" uid="uid://b0ky6l618pfx0" path="res://assets/textures/Controls/keyboard_arrows_all.png" id="2_ws7fq"]
@@ -7,7 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://bfm7awcncnk86" path="res://assets/textures/Controls/keyboard_e.png" id="4_omr3a"]
 [ext_resource type="Texture2D" uid="uid://b4a7hsl1piqmk" path="res://assets/textures/Controls/mouse_right.png" id="4_s1n57"]
 [ext_resource type="Texture2D" uid="uid://bax1i501rvb8x" path="res://assets/textures/Controls/keyboard_shift.png" id="5_jtaxw"]
+[ext_resource type="Texture2D" uid="uid://ckdchia10a6of" path="res://assets/textures/Controls/keyboard_f.png" id="5_vnnfo"]
 [ext_resource type="Texture2D" uid="uid://dx22f0h2d7kxx" path="res://assets/textures/Controls/keyboard_r.png" id="6_3xp8f"]
+[ext_resource type="Texture2D" uid="uid://dlkalw8hentlp" path="res://assets/textures/spaceMissiles_004.png" id="10_eauvx"]
+[ext_resource type="Texture2D" uid="uid://s8eb761euudq" path="res://assets/textures/powerupBlue_shield.png" id="11_aolmw"]
+[ext_resource type="Texture2D" uid="uid://cn4bxfo0dj428" path="res://assets/textures/powerupGreen_bolt.png" id="12_83q87"]
+[ext_resource type="Texture2D" uid="uid://bsphrqs366vlc" path="res://assets/textures/orb.png" id="13_8eklk"]
 
 [sub_resource type="SystemFont" id="SystemFont_0do0m"]
 font_names = PackedStringArray("Impact")
@@ -53,12 +58,12 @@ layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainerMove" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerMove"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_0do0m")
 theme_override_font_sizes/font_size = 18
@@ -66,20 +71,20 @@ text = "Move"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainerMove"]
 layout_mode = 2
 texture = ExtResource("2_ws7fq")
 stretch_mode = 3
 
-[node name="seperator3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="seperator3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainerMove"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainerLaser" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerLaser"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_kqwun")
 theme_override_font_sizes/font_size = 18
@@ -87,28 +92,49 @@ text = "Shoot Laser"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainerLaser"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainerLaser/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("3_tfkgf")
 stretch_mode = 3
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainerLaser/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_dwkpi")
 stretch_mode = 3
 
-[node name="seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainerLaser"]
 layout_mode = 2
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainerAutoshoot" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerAutoshoot"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_kqwun")
+theme_override_font_sizes/font_size = 18
+text = "Toggle Autoshoot"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainerAutoshoot"]
+layout_mode = 2
+texture = ExtResource("5_vnnfo")
+stretch_mode = 3
+
+[node name="seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainerAutoshoot"]
+layout_mode = 2
+
+[node name="VBoxContainerRockets" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerRockets"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_jqih2")
 theme_override_font_sizes/font_size = 18
@@ -116,28 +142,28 @@ text = "Shoot Rockets"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainerRockets"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer3/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainerRockets/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_s1n57")
 stretch_mode = 3
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer3/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainerRockets/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("6_3xp8f")
 stretch_mode = 3
 
-[node name="seperator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+[node name="seperator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainerRockets"]
 layout_mode = 2
 
-[node name="VBoxContainer5" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainerExplode" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer5"]
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerExplode"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_xkpqd")
 theme_override_font_sizes/font_size = 18
@@ -145,20 +171,20 @@ text = "Explode Rockets"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer5"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainerExplode"]
 layout_mode = 2
 texture = ExtResource("4_omr3a")
 stretch_mode = 3
 
-[node name="seperator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer5"]
+[node name="seperator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainerExplode"]
 layout_mode = 2
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainerBoost" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer4"]
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerBoost"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_ls6i5")
 theme_override_font_sizes/font_size = 18
@@ -167,10 +193,115 @@ horizontal_alignment = 1
 clip_text = true
 uppercase = true
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer4"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainerBoost"]
 layout_mode = 2
 texture = ExtResource("5_jtaxw")
 stretch_mode = 3
 
-[node name="seperator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer4"]
+[node name="seperator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainerBoost"]
 layout_mode = 2
+
+[node name="MarginContainerRight" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 528.0
+offset_top = -340.0
+offset_right = 620.0
+offset_bottom = -67.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainerRight" type="VBoxContainer" parent="MarginContainerRight"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="MarginContainerRight/VBoxContainerRight"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_0do0m")
+theme_override_font_sizes/font_size = 24
+text = "Pickups"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="label2" type="Label" parent="MarginContainerRight/VBoxContainerRight"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_0do0m")
+theme_override_font_sizes/font_size = 18
+text = "Shield"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainerRight/VBoxContainerRight"]
+layout_mode = 2
+texture = ExtResource("11_aolmw")
+stretch_mode = 3
+
+[node name="label3" type="Label" parent="MarginContainerRight/VBoxContainerRight"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_0do0m")
+theme_override_font_sizes/font_size = 18
+text = "Boost"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainerRight/VBoxContainerRight"]
+layout_mode = 2
+texture = ExtResource("12_83q87")
+stretch_mode = 3
+
+[node name="MarginContainerLeft" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = -627.0
+offset_top = -340.0
+offset_right = -491.0
+offset_bottom = 87.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainerLeft" type="VBoxContainer" parent="MarginContainerLeft"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="MarginContainerLeft/VBoxContainerLeft"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_0do0m")
+theme_override_font_sizes/font_size = 24
+text = "Pickups"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="label" type="Label" parent="MarginContainerLeft/VBoxContainerLeft"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_0do0m")
+theme_override_font_sizes/font_size = 18
+text = "Rockets"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainerLeft/VBoxContainerLeft"]
+layout_mode = 2
+size_flags_vertical = 6
+texture = ExtResource("10_eauvx")
+stretch_mode = 3
+
+[node name="label4" type="Label" parent="MarginContainerLeft/VBoxContainerLeft"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_0do0m")
+theme_override_font_sizes/font_size = 18
+text = "Lives"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="TextureRect6" type="TextureRect" parent="MarginContainerLeft/VBoxContainerLeft"]
+layout_mode = 2
+texture = ExtResource("13_8eklk")
+stretch_mode = 3

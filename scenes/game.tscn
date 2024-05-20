@@ -108,6 +108,15 @@ position = Vector2(359, 461)
 [node name="RocketPickup" parent="." instance=ExtResource("15_18jx7")]
 position = Vector2(404, 368)
 
+[node name="RocketPickup2" parent="." instance=ExtResource("15_18jx7")]
+position = Vector2(469, 427)
+
+[node name="RocketPickup3" parent="." instance=ExtResource("15_18jx7")]
+position = Vector2(456, 309)
+
+[node name="RocketPickup4" parent="." instance=ExtResource("15_18jx7")]
+position = Vector2(511, 369)
+
 [node name="SchieldPickup" parent="." instance=ExtResource("11_xv50h")]
 position = Vector2(331, 308)
 
