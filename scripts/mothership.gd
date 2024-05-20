@@ -3,14 +3,20 @@ extends Area2D
 signal defeated
 signal boss_took_damage
 
-@export var health = 100
+@export var health = 5
 @export var maxhealth = 100
 @export var hspeed = 200
 @export var vspeed = 80
 var v_direction : int = -1
 const ENEMY_LASER = preload("res://scenes/enemy_laser.tscn")
 
+@onready var collision_polygon_2d = $CollisionPolygon2D
+@onready var retro_explosion_big = $RetroExplosionBig
 @onready var HitSound = $HitSound
+@onready var animation_player = $AnimationPlayer
+
+var shooting_allowed: bool = true
+var moving_allowed: bool = true
 
 func _physics_process(delta):
 	var windowsize = get_viewport_rect().size
@@ -25,9 +31,9 @@ func _physics_process(delta):
 	if global_position.x <= windowsize.x - 100:
 		hspeed = 0
 		
-	
-	global_position.y += v_direction * vspeed * delta
-	global_position.x -= hspeed * delta
+	if moving_allowed:
+		global_position.y += v_direction * vspeed * delta
+		global_position.x -= hspeed * delta
 
 
 func boss_take_damage(damage : int = 1):
@@ -38,7 +44,13 @@ func boss_take_damage(damage : int = 1):
 		defeat()
 
 func defeat():
+	animation_player.play("blink")
+	collision_polygon_2d.queue_free()
+	retro_explosion_big.emitting = true
+	shooting_allowed = false
+	moving_allowed = false
 	emit_signal("defeated")
+	await get_tree().create_timer(2.0).timeout
 	queue_free()
 
 
@@ -49,12 +61,13 @@ func _on_body_entered(body):
 
 
 func _on_timer_timeout():
-	if health <= 25: 
-		double_burst_shoot(9)
-	elif health <= 50: 
-		double_shoot(4)
-	elif health > 50:
-		burst_shoot(9)
+	if shooting_allowed:
+		if health <= 25: 
+			double_burst_shoot(9)
+		elif health <= 50: 
+			double_shoot(4)
+		else:
+			burst_shoot(9)
 
 
 func double_shoot(shots: int, y_offset : int = 55) -> void:
@@ -80,6 +93,6 @@ func burst_shoot(shots: int, y_offset : int = 0) -> void:
 		
 		
 func double_burst_shoot(shots : int):
-	burst_shoot(9, 55)
-	burst_shoot(9, -55)
+	burst_shoot(shots, 55)
+	burst_shoot(shots, -55)
 	

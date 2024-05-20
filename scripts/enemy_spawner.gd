@@ -21,7 +21,6 @@ var number_of_asteroids_spawned = 0
 var asteroid_array = [ASTEROID, ASTEROID_SMALL]
 var enemy_array = [ENEMY]
 
-@onready var SpawnPositions = $SpawnPositions
 @onready var AsteroidSpawnPositions = $AsteroidSpawnPositions
 @onready var SpawnTimer = $Timer
 @onready var AsteroidSpawnTimer = $AsteroidTimer
@@ -46,11 +45,9 @@ func _on_timer_timeout():
 
 
 func spawn_enemy():
-	# get random spawn position and instantiate
-	var spawn_positions_array = SpawnPositions.get_children()
-	var random_spawn_position = spawn_positions_array.pick_random()
+	%EnemyPathFollow2D.progress_ratio = randf()
 	var enemy_instance = enemy_array.pick_random().instantiate()
-	enemy_instance.global_position = random_spawn_position.global_position
+	enemy_instance.global_position = %EnemyPathFollow2D.global_position
 
 	# set random speed for enemy
 	enemy_instance.speed = randi_range(enemy_instance.speed * 0.8, enemy_instance.speed * 1.5)

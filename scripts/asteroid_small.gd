@@ -11,14 +11,14 @@ func _physics_process(delta):
 	rotation_degrees += 15 * delta
 
 
-func die():
+func die(_killer):
 	emit_signal("died")
 	queue_free()
 
 
 func _on_body_entered(body):
 	body.take_damage()
-	die()
+	die("Player")
 
 
 func is_asteroid() -> bool:
@@ -27,4 +27,4 @@ func is_asteroid() -> bool:
 
 func _on_area_entered(area):
 	if area.has_method("die"):
-		area.die()
+		area.die("Asteroid")

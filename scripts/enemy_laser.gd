@@ -14,14 +14,14 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 func _on_area_entered(area):
 	if area.has_method("is_asteroid"):
-		die()
+		die("Asteroid")
 		return
 
 
-func die():
+func die(_killer):
 	queue_free()
 
 
 func _on_body_entered(body):
 	body.take_damage()
-	die()
+	die("Player")

@@ -1,28 +1,38 @@
 extends Area2D
 
-signal died
+signal died(killer : String)
 
 @export var speed = 200
 const ENEMY_LASER = preload("res://scenes/enemy_laser.tscn")
+@onready var RetroExplosion = $RetroExplosion
+@onready var sprite_2d = $Sprite2D
+@onready var collision_shape_2d = $CollisionShape2D
 
+var shooting_allowed : bool = true
 
 func _physics_process(delta):
 	global_position.x -= speed * delta
 
 
-func die():
-	emit_signal("died")
+func die(killer : String) -> void:
+	collision_shape_2d.queue_free()
+	sprite_2d.visible = false
+	RetroExplosion.emitting = true
+	shooting_allowed = false
+	emit_signal("died", killer)
+	await get_tree().create_timer(0.5).timeout
 	queue_free()
 
 
 #Player = body
 func _on_body_entered(body):
 	body.take_damage()
-	die()
+	die("Player")
 
 
 func _on_timer_timeout():
-	double_shoot()
+	if shooting_allowed:
+		double_shoot()
 
 
 func double_shoot() -> void:

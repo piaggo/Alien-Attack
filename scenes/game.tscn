@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0q42auay2203"]
+[gd_scene load_steps=13 format=3 uid="uid://c0q42auay2203"]
 
 [ext_resource type="Texture2D" uid="uid://t7l1de01ia7s" path="res://assets/textures/bg.png" id="1_eo3xe"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_wnldx"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://61y3mpqi73e3" path="res://assets/audio/hit.wav" id="6_0ggj1"]
 [ext_resource type="AudioStream" uid="uid://cgqfebag6htae" path="res://assets/audio/explode.wav" id="7_gsote"]
 [ext_resource type="AudioStream" uid="uid://n2fvypkeseua" path="res://assets/audio/sfx_lose.ogg" id="8_y8qlr"]
+[ext_resource type="AudioStream" uid="uid://clviy13hs4kvs" path="res://assets/audio/Rocketshot.ogg" id="9_1cfkv"]
+[ext_resource type="AudioStream" uid="uid://cmfg0xdff6wal" path="res://assets/audio/BossSpawn.ogg" id="10_ajfv8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyalr"]
 size = Vector2(100, 1514)
@@ -24,8 +26,10 @@ script = ExtResource("1_wnldx")
 [node name="HUD" parent="UI" instance=ExtResource("2_koo4m")]
 
 [node name="Background" type="TextureRect" parent="."]
-offset_right = 1287.0
-offset_bottom = 729.0
+offset_left = -44.0
+offset_top = -40.0
+offset_right = 1332.0
+offset_bottom = 772.0
 texture = ExtResource("1_eo3xe")
 stretch_mode = 1
 
@@ -51,20 +55,37 @@ shape = SubResource("RectangleShape2D_t85fu")
 position = Vector2(691.25, 1079)
 shape = SubResource("RectangleShape2D_t85fu")
 
-[node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_0ggj1")
-
-[node name="PlayerHitSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_gsote")
-volume_db = -24.0
-
-[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_y8qlr")
-
 [node name="BossTimer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(642, 362)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="Audio"]
+position = Vector2(0, -1)
+stream = ExtResource("6_0ggj1")
+bus = &"SFX"
+
+[node name="PlayerHitSound" type="AudioStreamPlayer2D" parent="Audio"]
+position = Vector2(0, -1)
+stream = ExtResource("7_gsote")
+bus = &"SFX"
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_y8qlr")
+bus = &"SFX"
+
+[node name="RocketShotSound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("9_1cfkv")
+bus = &"SFX"
+
+[node name="BossSpawnSound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("10_ajfv8")
+bus = &"Music"
 
 [connection signal="boostdownSignal" from="Player" to="." method="_on_player_boostdown_signal"]
 [connection signal="boostupSignal" from="Player" to="." method="_on_player_boostup_signal"]

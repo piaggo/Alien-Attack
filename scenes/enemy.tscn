@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1m1h4ghokm57"]
+[gd_scene load_steps=5 format=3 uid="uid://b1m1h4ghokm57"]
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_d6rl6"]
 [ext_resource type="Texture2D" uid="uid://b4kndsp6efc3o" path="res://assets/textures/ships/bigger/spaceShips_002.png" id="2_fpcki"]
+[ext_resource type="PackedScene" uid="uid://dpqbou14ljw2j" path="res://scenes/retro_explosion.tscn" id="3_w8f5p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6qwv"]
 radius = 124.0
@@ -27,5 +28,8 @@ shape = SubResource("CapsuleShape2D_n6qwv")
 wait_time = 1.5
 autostart = true
 
+[node name="RetroExplosion" parent="." instance=ExtResource("3_w8f5p")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
