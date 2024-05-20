@@ -2,6 +2,7 @@ extends Control
 
 const GAME = preload("res://scenes/game.tscn")
 const CONTROLS = preload("res://scenes/controls.tscn")
+@onready var highscore_label = $"MarginContainer/HBoxContainer/VBoxContainer/Highscore Label"
 
 
 func _on_start_button_pressed():
@@ -18,4 +19,4 @@ func _on_exit_button_pressed():
 
 
 func _on_highscore_pressed():
-	get_tree().quit()
+	highscore_label.text = str(Global.save_data.highscore)

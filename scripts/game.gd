@@ -71,20 +71,22 @@ func _on_enemy_spawner_enemy_spawned(enemy_instance):
 
 func _on_enemy_spawner_path_enemy_spawned(path_enemy_scene_instance):
 	add_child(path_enemy_scene_instance)
-	path_enemy_scene_instance.enemy.connect("died", _on_enemy_died)
+	path_enemy_scene_instance.enemy.connect("died", _on_enemy_died.bind(path_enemy_scene_instance))
 
 
-func _on_enemy_died(killer, deathPosition):
+func _on_enemy_died(killer, deathPosition, pathenemy = null):
 	enemy_hit_sound.play()
 	if killer == "Player":
 		score += 100
 		hud.set_score_label(score)
 		if randi_range(0,100) >= 85:
 			pickup_spawner.spawnRandomPickup(deathPosition)
-
+	if pathenemy != null:
+		pathenemy.speed_modifier = 0
 
 	if killer == "Asteroid":
 		asteroidKillCount += 1
+
 
 
 # Delete Enemies behind Player

@@ -49,6 +49,8 @@ func defeat():
 	retro_explosion_big.emitting = true
 	shooting_allowed = false
 	moving_allowed = false
+	animation_player.play("Score")
+	$ScoreLabel.visible = true
 	emit_signal("defeated")
 	await get_tree().create_timer(2.0).timeout
 	queue_free()

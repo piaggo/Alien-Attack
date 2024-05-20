@@ -54,9 +54,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -183.5
-offset_top = -111.5
+offset_top = -159.5
 offset_right = 183.5
-offset_bottom = -23.5
+offset_bottom = -71.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "GAME OVER"
@@ -70,13 +70,31 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -142.5
-offset_top = -27.5
+offset_top = -78.5
 offset_right = 142.5
-offset_bottom = 39.5
+offset_bottom = -11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "SCORE: 9999"
 label_settings = SubResource("LabelSettings_75ti4")
+
+[node name="HighscoreLabel" type="Label" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -7.0
+offset_right = 91.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "New Highscore!"
 
 [node name="RetryButton" type="Button" parent="Panel"]
 layout_mode = 1

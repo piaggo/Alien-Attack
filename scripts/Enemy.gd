@@ -7,6 +7,7 @@ const ENEMY_LASER = preload("res://scenes/enemy_laser.tscn")
 @onready var RetroExplosion = $RetroExplosion
 @onready var sprite_2d = $Sprite2D
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var animation_player = $AnimationPlayer
 
 var shooting_allowed : bool = true
 
@@ -16,10 +17,14 @@ func _physics_process(delta):
 
 func die(killer : String) -> void:
 	collision_shape_2d.queue_free()
+	speed /= 2
 	sprite_2d.visible = false
 	RetroExplosion.emitting = true
 	shooting_allowed = false
 	emit_signal("died", killer, global_position)
+	if killer == "Player":
+		$ScoreLabel.visible = true
+		animation_player.play("score")
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
 

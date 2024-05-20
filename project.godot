@@ -19,6 +19,10 @@ boot_splash/fullsize=false
 config/icon="res://Bitslix_logo_small.svg"
 boot_splash/minimum_display_time=2500
 
+[autoload]
+
+Global="*res://autoloads/global.gd"
+
 [display]
 
 window/size/viewport_width=1280

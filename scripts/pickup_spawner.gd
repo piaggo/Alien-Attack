@@ -8,6 +8,10 @@ const ROCKET_PICKUP = preload("res://scenes/rocket_pickup.tscn")
 var all_pickups = [BOOST_PICKUP,SCHIELD_PICKUP,LIVE_PICKUP, ROCKET_PICKUP]
 var all_pickups_no_lives = [BOOST_PICKUP,SCHIELD_PICKUP,ROCKET_PICKUP]
 
+func _ready():
+	spawnRandomPickup(Vector2(500,250))
+	spawnRandomPickup(Vector2(500,450))
+
 func spawnRandomPickup(spawnPosition : Vector2) -> void:
 	var pickup = all_pickups_no_lives.pick_random().instantiate()
 	call_deferred("add_child",pickup)
