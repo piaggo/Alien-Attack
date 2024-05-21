@@ -305,3 +305,23 @@ uppercase = true
 layout_mode = 2
 texture = ExtResource("13_8eklk")
 stretch_mode = 3
+
+[node name="VSlider" type="VSlider" parent="."]
+custom_minimum_size = Vector2(20, 100)
+layout_mode = 0
+offset_left = 547.0
+offset_top = 218.0
+offset_right = 563.0
+offset_bottom = 318.0
+max_value = 1.0
+step = 0.0
+
+[node name="Music" type="Label" parent="."]
+layout_mode = 0
+offset_left = 531.0
+offset_top = 324.0
+offset_right = 577.0
+offset_bottom = 347.0
+text = "Music"
+
+[connection signal="value_changed" from="VSlider" to="." method="_on_v_slider_value_changed"]
