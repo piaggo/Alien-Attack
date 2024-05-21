@@ -17,7 +17,7 @@ Download the "Alien-attack.exe" from the latest Release and have fun
 | <kbd>Left mouse button</kbd> | Shoot Lasers |
 | <kbd>F</kbd> | Toggle Autoshoot Lasers |
 | <kbd>Right mouse button</kbd> or <kbd>R</kbd> | Shoot Rockets |
-| <kbd>E</kbd> | Let Rockets eplode |
+| <kbd>E</kbd> | Let Rockets explode |
 
 ## Made with
 
