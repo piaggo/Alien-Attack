@@ -19,7 +19,17 @@ Download the "Alien-attack.exe" from the latest Release and have fun
 | <kbd>Right mouse button</kbd> or <kbd>R</kbd> | Shoot Rockets |
 | <kbd>E</kbd> | Let Rockets explode |
 
-## Made with
+## Screenshots
+
+![Screenshot0](screenhots/screenshot_menu.png)
+
+![Screenshot1](screenhots/screenshot1.png)
+
+![Screenshot2](screenhots/screenshot2.png)
+
+![Screenshot3](screenhots/screenshot3.png)
+
+# Made with
 
 Made with GODOT 4.2.2 [Homepage](https://godotengine.org/)
 

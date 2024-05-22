@@ -43,7 +43,7 @@ position = Vector2(140, 384)
 [node name="PickupSpawner" parent="." instance=ExtResource("6_0ames")]
 
 [node name="BossTimer" type="Timer" parent="."]
-wait_time = 50.0
+wait_time = 3.0
 one_shot = true
 autostart = true
 
