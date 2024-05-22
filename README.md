@@ -21,13 +21,13 @@ Download the "Alien-attack.exe" from the latest Release and have fun
 
 ## Screenshots
 
-![Screenshot0](/screenhots/screenshot_menu.png)
+![Screenshot0](/screenhots/screenshot_menu.png?raw=true)
 
-![Screenshot1](/screenhots/screenshot1.png)
+![Screenshot1](/screenhots/screenshot1.png?raw=true)
 
-![Screenshot2](/screenhots/screenshot2.png)
+![Screenshot2](/screenhots/screenshot2.png?raw=true)
 
-![Screenshot3](/screenhots/screenshot3.png)
+![Screenshot3](/screenhots/screenshot3.png?raw=true)
 
 # Made with
 
