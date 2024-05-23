@@ -88,7 +88,6 @@ func _on_enemy_died(killer, deathPosition, pathenemy = null):
 		asteroidKillCount += 1
 
 
-
 # Delete Enemies behind Player
 func _on_deathzone_area_entered(area):
 	area.queue_free()
