@@ -48,9 +48,9 @@ func set_rockets_visible(number: int) -> void:
 
 func set_boss_bar_visible(new_visibility: bool) -> void:
 	BossHealthBar.visible = new_visibility
-	
+
 func set_boss_bar_max(new_max: int) -> void:
 	BossHealthBar.max_value = new_max
-	
+
 func set_boss_bar_value(new_value: int) -> void:
 	BossHealthBar.value = new_value

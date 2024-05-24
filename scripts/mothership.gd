@@ -20,17 +20,17 @@ var moving_allowed: bool = true
 
 func _physics_process(delta):
 	var windowsize = get_viewport_rect().size
-	
+
 	# Move up and down
 	if global_position.y <= 100:
 		v_direction = 1
 	elif global_position.y >= windowsize.y - 100:
 		v_direction = -1
-	
+
 	#get into position
 	if global_position.x <= windowsize.x - 100:
 		hspeed = 0
-		
+
 	if moving_allowed:
 		global_position.y += v_direction * vspeed * delta
 		global_position.x -= hspeed * delta
@@ -64,9 +64,9 @@ func _on_body_entered(body):
 
 func _on_timer_timeout():
 	if shooting_allowed:
-		if health <= 25: 
+		if health <= 25:
 			double_burst_shoot(9)
-		elif health <= 50: 
+		elif health <= 50:
 			double_shoot(4)
 		else:
 			burst_shoot(9)
@@ -83,7 +83,7 @@ func double_shoot(shots: int, y_offset : int = 55) -> void:
 		laser_instance_bot.global_position.x = global_position.x - 100
 		laser_instance_bot.global_position.y = global_position.y - y_offset
 		await get_tree().create_timer(0.3).timeout
-		
+
 
 func burst_shoot(shots: int, y_offset : int = 0) -> void:
 	for shot in shots:
@@ -92,9 +92,9 @@ func burst_shoot(shots: int, y_offset : int = 0) -> void:
 		laser_instance.global_position.x = global_position.x - 100
 		laser_instance.global_position.y = global_position.y + y_offset
 		laser_instance.vector.y = shot * 15
-		
-		
+
+
 func double_burst_shoot(shots : int):
 	burst_shoot(shots, 55)
 	burst_shoot(shots, -55)
-	
+

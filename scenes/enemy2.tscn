@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://frngr582qgh3"]
+
+[ext_resource type="Script" path="res://scripts/Enemy2.gd" id="1_2bf3b"]
+[ext_resource type="Texture2D" uid="uid://n0kpa7xpg2hm" path="res://assets/textures/ships/spaceShips_003.png" id="2_8he8w"]
+[ext_resource type="PackedScene" uid="uid://dpqbou14ljw2j" path="res://scenes/retro_explosion.tscn" id="3_vcltq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vh3ap"]
+radius = 108.0
+height = 240.0
+
+[sub_resource type="Animation" id="Animation_8ybke"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScoreLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-28, -192)]
+}
+
+[sub_resource type="Animation" id="Animation_nuvla"]
+resource_name = "score"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScoreLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-28, -192), Vector2(-28, -228)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s5th4"]
+_data = {
+"RESET": SubResource("Animation_8ybke"),
+"score": SubResource("Animation_nuvla")
+}
+
+[sub_resource type="SystemFont" id="SystemFont_g17fh"]
+font_names = PackedStringArray("Impact")
+
+[node name="Enemy" type="Area2D"]
+scale = Vector2(0.25, 0.25)
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_2bf3b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(2.26595, 2.26595)
+texture = ExtResource("2_8he8w")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vh3ap")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="RetroExplosion" parent="." instance=ExtResource("3_vcltq")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s5th4")
+}
+
+[node name="ScoreLabel" type="Label" parent="."]
+visible = false
+offset_left = -28.0
+offset_top = -192.0
+offset_right = 41.0
+offset_bottom = -152.0
+theme_override_fonts/font = SubResource("SystemFont_g17fh")
+theme_override_font_sizes/font_size = 32
+text = "+ 100"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

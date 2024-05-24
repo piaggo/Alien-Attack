@@ -6,7 +6,7 @@ const SAVE_PATH:String = "user://alienattackhighscore.tres"
 
 func save() -> void:
 	ResourceSaver.save(self, SAVE_PATH)
-	
+
 static func load_or_create() -> SaveData:
 	var res
 	if FileAccess.file_exists(SAVE_PATH):
