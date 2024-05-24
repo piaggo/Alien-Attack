@@ -41,7 +41,7 @@ func _process(_delta):
 		shoot_rocket()
 	if Input.is_action_just_pressed("enable_autoshoot"):
 		enable_auto_shoot = !enable_auto_shoot
-	
+
 
 func _physics_process(_delta):
 	# Move Player
@@ -174,7 +174,7 @@ func rocketPickup():
 
 func liveup() -> void:
 	emit_signal("liveUpSignal")
-	
+
 
 
 

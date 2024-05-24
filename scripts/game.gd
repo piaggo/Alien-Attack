@@ -163,7 +163,7 @@ func _on_boss_defeated():
 	EnemySpawner.reset_spawn_timers()
 	BossTimer.start()
 	hud.set_lives_label(lives)
-	
+
 
 func _on_boss_took_damage(boss_instance):
 	hud.set_boss_bar_value(boss_instance.health)

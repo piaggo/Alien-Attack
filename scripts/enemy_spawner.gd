@@ -101,10 +101,10 @@ func _on_asteroid_timer_timeout():
 		AsteroidSpawnTimer.wait_time *= 0.9
 		number_of_asteroids_spawned = 0
 
-func spawn_boss():	
+func spawn_boss():
 	var boss_instance = MOTHERSHIP.instantiate()
 	emit_signal("boss_spawned",boss_instance)
-	
+
 
 func reset_spawn_timers():
 	SpawnTimer.wait_time = DEFAULT_SPAWN_TIMER
