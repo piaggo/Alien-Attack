@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddqh8hq16qfs0"]
+[gd_scene load_steps=12 format=3 uid="uid://ddqh8hq16qfs0"]
 
 [ext_resource type="Texture2D" uid="uid://peqgn81ew0ud" path="res://assets/textures/blue_background.png" id="1_4jllo"]
 [ext_resource type="Script" path="res://scripts/ship_selector.gd" id="1_8p30o"]
 [ext_resource type="Texture2D" uid="uid://bcem4wudnfnh5" path="res://assets/textures/ships/playerBlue1.png" id="2_xhfam"]
+[ext_resource type="Texture2D" uid="uid://dlkalw8hentlp" path="res://assets/textures/spaceMissiles_004.png" id="4_4tvhk"]
 
 [sub_resource type="SystemFont" id="SystemFont_ojh4p"]
 font_names = PackedStringArray("Impact")
@@ -151,6 +152,13 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
+[node name="Stats" type="Label" parent="Stats/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_6mlqp")
+theme_override_font_sizes/font_size = 32
+text = "Stats"
+uppercase = true
+
 [node name="Speed" type="Label" parent="Stats/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_6mlqp")
@@ -200,7 +208,7 @@ step = 1.0
 value = 25.0
 show_percentage = false
 
-[node name="Secondary Weapon" type="MarginContainer" parent="."]
+[node name="SecondaryWeapon" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -213,6 +221,51 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SecondaryWeapon"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Powers" type="Label" parent="SecondaryWeapon/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_6mlqp")
+theme_override_font_sizes/font_size = 32
+text = "Powers"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="PowerNameLabel" type="Label" parent="SecondaryWeapon/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_6mlqp")
+theme_override_font_sizes/font_size = 24
+text = "Rockets"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="Control" type="Control" parent="SecondaryWeapon/VBoxContainer"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="SecondaryWeapon/VBoxContainer/Control"]
+layout_direction = 3
+layout_mode = 2
+offset_right = 35.0
+offset_bottom = 102.0
+scale = Vector2(0.6, 0.6)
+size_flags_horizontal = 8
+texture = ExtResource("4_4tvhk")
+stretch_mode = 2
+
+[node name="PowerDescription" type="Label" parent="SecondaryWeapon/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_6mlqp")
+theme_override_font_sizes/font_size = 24
+text = "A lot!"
+horizontal_alignment = 2
+autowrap_mode = 2
+uppercase = true
 
 [node name="StartButton" type="Button" parent="."]
 custom_minimum_size = Vector2(180, 0)

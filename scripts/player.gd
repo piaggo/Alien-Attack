@@ -17,7 +17,7 @@ var speed = maxspeed
 var maxboostspeedmultiplier = 2.0
 var currentboostspeedmultiplier = 1.0
 var invul_frames : bool = false
-var enable_auto_shoot : bool = false
+var enable_auto_shoot : bool = true
 
 
 @export var numberofrockets = 1
@@ -41,16 +41,21 @@ const LASER = preload("res://scenes/laser.tscn")
 func _ready() -> void:
 	sprite_2d.texture = load(Global.selected_player_ship.sprite)
 	laser_timer.wait_time = Global.selected_player_ship.firerate
+	if Global.selected_player_ship.secondary_fire == "Rocket":
+		RocketReloadTimer.wait_time = Global.selected_player_ship.secondary_reload_time
+		RocketReloadTimer.start()
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("laser"):
-		if !enable_auto_shoot:
-			shoot_laser()
-	if Input.is_action_just_pressed("rocket") && numberofrockets > 0:
-		shoot_rocket()
-	if Input.is_action_just_pressed("enable_autoshoot"):
-		enable_auto_shoot = !enable_auto_shoot
+	if Input.is_action_pressed("laser"):
+		enable_auto_shoot = true
+	else:
+		enable_auto_shoot = false
+	#if Input.is_action_just_pressed("enable_autoshoot"):
+		#enable_auto_shoot = !enable_auto_shoot
+	if Global.selected_player_ship.secondary_fire == "Rocket":
+		if Input.is_action_just_pressed("secondary") && numberofrockets > 0:
+			shoot_rocket()
 
 
 func _physics_process(_delta):
@@ -132,6 +137,10 @@ func shieldup() -> void:
 
 func _on_shield_down() -> void:
 	emit_signal("shielddownSignal")
+	invul_frames = true
+	BlinkAnimation.play("blink")
+	await get_tree().create_timer(1).timeout
+	invul_frames = false
 
 
 func boostready():
@@ -174,6 +183,7 @@ func _on_rocket_reload_timer_timeout():
 	if numberofrockets < 3:
 		numberofrockets += 1
 		emit_signal("rocketReload")
+		print("Timer")
 	else:
 		RocketReloadTimer.stop()
 
