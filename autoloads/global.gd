@@ -1,5 +1,6 @@
 extends Node
 
+
 var player_ship_1 = {
 	"unlocked" : true,
 	"name": "Rocket Slinger",

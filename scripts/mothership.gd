@@ -96,7 +96,6 @@ func burst_shoot(shots: int, y_offset : int = 0) -> void:
 		if y_offset < 0:
 			laser_instance.vector.y = shot * 15
 
-
 func double_burst_shoot(shots : int):
 	burst_shoot(shots, 55)
 	burst_shoot(shots, -55)

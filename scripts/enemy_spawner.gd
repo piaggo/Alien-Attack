@@ -6,6 +6,7 @@ signal path_enemy_spawned(path_enemy_scene_instance)
 signal boss_spawned(boss_instance)
 
 const ENEMY = preload("res://scenes/enemy.tscn")
+const ENEMY2 = preload("res://scenes/enemy2.tscn")
 const PATH_ENEMY = preload("res://scenes/path_enemy.tscn")
 const ASTEROID = preload("res://scenes/asteroid.tscn")
 const ASTEROID_SMALL = preload("res://scenes/asteroid_small.tscn")
@@ -19,7 +20,7 @@ const DEFAULT_SPAWN_PATH_TIMER : int = 4
 var number_of_enemies_spawned = 0
 var number_of_asteroids_spawned = 0
 var asteroid_array = [ASTEROID, ASTEROID_SMALL]
-var enemy_array = [ENEMY]
+var enemy_array = [ENEMY,ENEMY2]
 
 @onready var AsteroidSpawnPositions = $AsteroidSpawnPositions
 @onready var SpawnTimer = $Timer
