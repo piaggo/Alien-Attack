@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://8cavxehahlgp"]
+[gd_scene load_steps=18 format=3 uid="uid://8cavxehahlgp"]
 
 [ext_resource type="Script" path="res://scripts/controls.gd" id="1_tm7mp"]
 [ext_resource type="Texture2D" uid="uid://b0ky6l618pfx0" path="res://assets/textures/Controls/keyboard_arrows_all.png" id="2_ws7fq"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bfm7awcncnk86" path="res://assets/textures/Controls/keyboard_e.png" id="4_omr3a"]
 [ext_resource type="Texture2D" uid="uid://b4a7hsl1piqmk" path="res://assets/textures/Controls/mouse_right.png" id="4_s1n57"]
 [ext_resource type="Texture2D" uid="uid://bax1i501rvb8x" path="res://assets/textures/Controls/keyboard_shift.png" id="5_jtaxw"]
-[ext_resource type="Texture2D" uid="uid://ckdchia10a6of" path="res://assets/textures/Controls/keyboard_f.png" id="5_vnnfo"]
 [ext_resource type="Texture2D" uid="uid://dx22f0h2d7kxx" path="res://assets/textures/Controls/keyboard_r.png" id="6_3xp8f"]
 [ext_resource type="Texture2D" uid="uid://dlkalw8hentlp" path="res://assets/textures/spaceMissiles_004.png" id="10_eauvx"]
 [ext_resource type="Texture2D" uid="uid://s8eb761euudq" path="res://assets/textures/powerupBlue_shield.png" id="11_aolmw"]
@@ -88,7 +87,7 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_kqwun")
 theme_override_font_sizes/font_size = 18
-text = "Shoot Laser"
+text = "Shoot Laser (Hold)"
 horizontal_alignment = 1
 uppercase = true
 
@@ -106,27 +105,6 @@ texture = ExtResource("4_dwkpi")
 stretch_mode = 3
 
 [node name="seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainerLaser"]
-layout_mode = 2
-
-[node name="VBoxContainerAutoshoot" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerAutoshoot"]
-layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_kqwun")
-theme_override_font_sizes/font_size = 18
-text = "Toggle Autoshoot"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainerAutoshoot"]
-layout_mode = 2
-texture = ExtResource("5_vnnfo")
-stretch_mode = 3
-
-[node name="seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainerAutoshoot"]
 layout_mode = 2
 
 [node name="VBoxContainerRockets" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
