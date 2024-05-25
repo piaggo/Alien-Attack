@@ -1,8 +1,5 @@
 extends Control
 
-
-
-
 func set_score(new_score):
 	$Panel/Score.text = "SCORE: " + str(new_score)
 	if new_score > Global.save_data.highscore:
@@ -18,4 +15,4 @@ func _on_retry_button_pressed():
 
 
 func _on_give_up_button_pressed():
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

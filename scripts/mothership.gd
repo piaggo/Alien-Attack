@@ -91,8 +91,10 @@ func burst_shoot(shots: int, y_offset : int = 0) -> void:
 		get_parent().add_child(laser_instance)
 		laser_instance.global_position.x = global_position.x - 100
 		laser_instance.global_position.y = global_position.y + y_offset
-		laser_instance.vector.y = shot * 15
-
+		if y_offset >= 0:
+			laser_instance.vector.y = shot * -15
+		if y_offset < 0:
+			laser_instance.vector.y = shot * 15
 
 func double_burst_shoot(shots : int):
 	burst_shoot(shots, 55)
