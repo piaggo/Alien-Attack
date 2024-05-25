@@ -1,0 +1,232 @@
+[gd_scene load_steps=11 format=3 uid="uid://ddqh8hq16qfs0"]
+
+[ext_resource type="Texture2D" uid="uid://peqgn81ew0ud" path="res://assets/textures/blue_background.png" id="1_4jllo"]
+[ext_resource type="Script" path="res://scripts/ship_selector.gd" id="1_8p30o"]
+[ext_resource type="Texture2D" uid="uid://bcem4wudnfnh5" path="res://assets/textures/ships/playerBlue1.png" id="2_xhfam"]
+
+[sub_resource type="SystemFont" id="SystemFont_ojh4p"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_44iof"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_6mlqp"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg503"]
+bg_color = Color(0.243137, 0.533333, 0.631373, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfci6"]
+bg_color = Color(0.243137, 0.533333, 0.631373, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_byhoe"]
+bg_color = Color(0.243137, 0.533333, 0.631373, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="SystemFont" id="SystemFont_bq05s"]
+font_names = PackedStringArray("Impact")
+
+[node name="ShipSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8p30o")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4jllo")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 388.0
+offset_right = -398.0
+offset_bottom = 652.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="PreviousShipButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_ojh4p")
+theme_override_font_sizes/font_size = 48
+text = "<"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_44iof")
+theme_override_font_sizes/font_size = 24
+text = "Select your Ship"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Seperator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_xhfam")
+stretch_mode = 3
+
+[node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ShipnameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_44iof")
+theme_override_font_sizes/font_size = 24
+text = "Shipname"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="NextShipButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_ojh4p")
+theme_override_font_sizes/font_size = 48
+text = ">"
+
+[node name="Stats" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 300.0
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Speed" type="Label" parent="Stats/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_6mlqp")
+theme_override_font_sizes/font_size = 24
+text = "Speed"
+uppercase = true
+
+[node name="SpeedBar" type="ProgressBar" parent="Stats/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_bg503")
+max_value = 400.0
+step = 1.0
+value = 350.0
+show_percentage = false
+
+[node name="Projectile Speed" type="Label" parent="Stats/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_6mlqp")
+theme_override_font_sizes/font_size = 24
+text = "Projectile Speed"
+uppercase = true
+
+[node name="ProjectileSpeedBar" type="ProgressBar" parent="Stats/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_mfci6")
+min_value = 600.0
+max_value = 1400.0
+step = 1.0
+value = 800.0
+show_percentage = false
+
+[node name="Firerate" type="Label" parent="Stats/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_6mlqp")
+theme_override_font_sizes/font_size = 24
+text = "Firerate"
+uppercase = true
+
+[node name="FireRateBar" type="ProgressBar" parent="Stats/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_byhoe")
+max_value = 50.0
+step = 1.0
+value = 25.0
+show_percentage = false
+
+[node name="Secondary Weapon" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="StartButton" type="Button" parent="."]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+offset_left = 550.0
+offset_top = 661.0
+offset_right = 730.0
+offset_bottom = 709.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = SubResource("SystemFont_bq05s")
+theme_override_font_sizes/font_size = 32
+text = "FIGHT"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer3/PreviousShipButton" to="." method="_on_previous_ship_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/NextShipButton" to="." method="_on_next_ship_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

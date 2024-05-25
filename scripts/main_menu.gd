@@ -1,12 +1,13 @@
 extends Control
 
-const GAME = preload("res://scenes/game.tscn")
+
+const SHIP_SELECTOR = preload("res://scenes/ship_selector.tscn")
 const CONTROLS = preload("res://scenes/controls.tscn")
 @onready var highscore_label = $"MarginContainer/HBoxContainer/VBoxContainer/Highscore Label"
 
 
 func _on_start_button_pressed():
-	get_tree().change_scene_to_packed(GAME)
+	get_tree().change_scene_to_packed(SHIP_SELECTOR)
 
 
 func _on_show_controls_button_pressed():

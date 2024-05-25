@@ -10,15 +10,18 @@ signal rocketShot
 signal rocketReload
 signal liveUpSignal
 
+
 var boostup: bool = false
-var speed = 300
-var maxspeed = 300
+var maxspeed = Global.selected_player_ship.maxspeed
+var speed = maxspeed
 var maxboostspeedmultiplier = 2.0
 var currentboostspeedmultiplier = 1.0
 var invul_frames : bool = false
 var enable_auto_shoot : bool = false
 
+
 @export var numberofrockets = 1
+
 
 @onready var rocket_container = $RocketContainer
 @onready var pewpew = $LaserSound
@@ -26,11 +29,18 @@ var enable_auto_shoot : bool = false
 @onready var RocketReloadTimer = $Timers/RocketReloadTimer
 @onready var BlinkAnimation = $BlinkAnimation
 @onready var boost_pickup_sound = $BoostPickupSound
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var laser_timer: Timer = $LaserTimer
 
 
 const ROCKET = preload("res://scenes/rocket.tscn")
 const SHIELD = preload("res://scenes/shield.tscn")
 const LASER = preload("res://scenes/laser.tscn")
+
+
+func _ready() -> void:
+	sprite_2d.texture = load(Global.selected_player_ship.sprite)
+	laser_timer.wait_time = Global.selected_player_ship.firerate
 
 
 func _process(_delta):
@@ -78,6 +88,7 @@ func shoot_laser():
 	rocket_container.add_child(laser_instance)
 	laser_instance.global_position.x = global_position.x + 80
 	laser_instance.global_position.y = global_position.y
+	laser_instance.velocity = Global.selected_player_ship.projectilespeed
 	pewpew.play()
 
 
@@ -172,10 +183,9 @@ func rocketPickup():
 		numberofrockets += 1
 		emit_signal("rocketReload")
 
+
 func liveup() -> void:
 	emit_signal("liveUpSignal")
-
-
 
 
 func _on_laser_timer_timeout():
