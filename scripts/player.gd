@@ -183,7 +183,6 @@ func _on_rocket_reload_timer_timeout():
 	if numberofrockets < 3:
 		numberofrockets += 1
 		emit_signal("rocketReload")
-		print("Timer")
 	else:
 		RocketReloadTimer.stop()
 
