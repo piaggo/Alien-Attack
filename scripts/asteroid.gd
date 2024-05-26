@@ -5,6 +5,10 @@ signal died
 @export var speed = 200
 
 @export var directionVector = Vector2(-90, -90)
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var retro_explosion: GPUParticles2D = $RetroExplosion
+@onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
+
 
 
 func _physics_process(delta):
@@ -13,6 +17,11 @@ func _physics_process(delta):
 
 
 func die(_killer):
+	collision_polygon_2d.queue_free()
+	speed /= 2
+	sprite_2d.visible = false
+	retro_explosion.emitting = true
+	await get_tree().create_timer(0.5).timeout
 	emit_signal("died")
 	queue_free()
 

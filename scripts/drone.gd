@@ -25,14 +25,9 @@ func _physics_process(delta):
 		if enemies_in_range.size() > 0 && !currently_shooting:
 			var target_enemy = enemies_in_range.front()
 			var angle_to_enemy = global_position.direction_to(target_enemy.get_global_position()).angle()
-			#if target_enemy.on_path:
-				#angle_to_enemy
-			#else:
-				#angle_to_enemy = global_position.direction_to(target_enemy.position).angle()
 			gun.rotation = move_toward(gun.rotation, angle_to_enemy, delta*3)
 			if gun.rotation == angle_to_enemy && ready_to_shoot:
 				shoot()
-
 
 func die():
 	retro_explosion.emitting = true

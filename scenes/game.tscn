@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c0q42auay2203"]
+[gd_scene load_steps=16 format=3 uid="uid://c0q42auay2203"]
 
 [ext_resource type="Texture2D" uid="uid://t7l1de01ia7s" path="res://assets/textures/bg.png" id="1_eo3xe"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_wnldx"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://clviy13hs4kvs" path="res://assets/audio/Rocketshot.ogg" id="9_1cfkv"]
 [ext_resource type="AudioStream" uid="uid://cmfg0xdff6wal" path="res://assets/audio/BossSpawn.ogg" id="10_ajfv8"]
 [ext_resource type="AudioStream" uid="uid://dj6r1oku47fg6" path="res://assets/audio/LiveUpSound.wav" id="12_et3tt"]
+[ext_resource type="AudioStream" uid="uid://c0qrpx0ctvra8" path="res://assets/audio/SentryDeploy.ogg" id="13_sss2r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyalr"]
 size = Vector2(100, 1514)
@@ -93,6 +94,11 @@ bus = &"Music"
 
 [node name="LiveUpSound" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("12_et3tt")
+bus = &"SFX"
+
+[node name="SentryDeploySound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("13_sss2r")
+volume_db = -12.0
 bus = &"SFX"
 
 [connection signal="boostdownSignal" from="Player" to="." method="_on_player_boostdown_signal"]

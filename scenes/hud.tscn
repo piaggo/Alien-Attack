@@ -99,6 +99,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Rocket" type="TextureRect" parent="Rockets"]
+visible = false
 layout_mode = 0
 offset_left = 25.0
 offset_top = 600.0
@@ -108,6 +109,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_d2xtr")
 
 [node name="Rocket2" type="TextureRect" parent="Rockets"]
+visible = false
 layout_mode = 0
 offset_left = 45.0
 offset_top = 600.0
@@ -117,6 +119,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_d2xtr")
 
 [node name="Rocket3" type="TextureRect" parent="Rockets"]
+visible = false
 layout_mode = 0
 offset_left = 65.0
 offset_top = 600.0
@@ -149,6 +152,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Sentry" type="TextureRect" parent="Sentrys"]
+visible = false
 layout_mode = 0
 offset_left = 20.0
 offset_top = 650.0
@@ -159,6 +163,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_m2af4")
 
 [node name="Sentry2" type="TextureRect" parent="Sentrys"]
+visible = false
 layout_mode = 0
 offset_left = 50.0
 offset_top = 650.0
@@ -169,6 +174,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_m2af4")
 
 [node name="Sentry3" type="TextureRect" parent="Sentrys"]
+visible = false
 layout_mode = 0
 offset_left = 80.0
 offset_top = 650.0

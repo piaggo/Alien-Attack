@@ -13,6 +13,8 @@ extends Node2D
 @onready var BossTimer = $BossTimer
 @onready var camera_2d = $Camera2D
 @onready var pickup_spawner = $PickupSpawner
+@onready var sentry_deploy_sound: AudioStreamPlayer = $Audio/SentryDeploySound
+
 
 var asteroidKillCount = 0
 var lives = 3
@@ -101,6 +103,7 @@ func _on_enemy_spawner_asteroid_spawned(asteroid_instance):
 
 
 func _on_asteroid_died():
+	enemy_hit_sound.play()
 	pass
 
 
@@ -129,6 +132,7 @@ func _on_player_secondary_used() -> void:
 		rocket_shot_sound.play()
 	if Global.selected_player_ship.secondary_fire == "Sentry":
 		hud.set_sentrys_visible(player.numberofsentries)
+		sentry_deploy_sound.play()
 
 func _on_player_secondary_reload() -> void:
 	if Global.selected_player_ship.secondary_fire == "Rocket":
