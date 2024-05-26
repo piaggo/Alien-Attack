@@ -1,10 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8uoxcthmawnq"]
+[gd_scene load_steps=11 format=3 uid="uid://c8uoxcthmawnq"]
 
 [ext_resource type="Script" path="res://scripts/beam.gd" id="1_4eckv"]
 [ext_resource type="Texture2D" uid="uid://c4rg8kjueld6w" path="res://assets/textures/laserBlue09.png" id="2_4dljy"]
+[ext_resource type="Texture2D" uid="uid://c23wu8qvbogvl" path="res://assets/textures/particles/glowing_circle.png" id="3_ex5m2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u6uuq"]
 size = Vector2(1500, 10)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nu6ym"]
+particle_flag_disable_z = true
+initial_velocity_max = 633.09
+gravity = Vector3(0, 98, 0)
+
+[sub_resource type="Gradient" id="Gradient_0gitp"]
+offsets = PackedFloat32Array(0, 0.632287)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sme16"]
+gradient = SubResource("Gradient_0gitp")
+
+[sub_resource type="Curve" id="Curve_wmaqq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.657371, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0125209), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jwljn"]
+curve = SubResource("Curve_wmaqq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ae627"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(750, 20, 1)
+spread = 72.194
+initial_velocity_max = 120.0
+radial_velocity_max = 100.72
+gravity = Vector3(0, 0, 0)
+tangential_accel_max = 100.0
+scale_curve = SubResource("CurveTexture_jwljn")
+color_ramp = SubResource("GradientTexture1D_sme16")
 
 [node name="Beam" type="Area2D"]
 scale = Vector2(0.8, 0.8)
@@ -18,13 +50,31 @@ width = 5.0
 default_color = Color(0.611035, 0.887912, 0.985031, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 rotation = 0.785398
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_4dljy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(750, 1.13687e-13)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_u6uuq")
+
+[node name="CastingParticles" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(10, 0)
+scale = Vector2(0.1, 0.1)
+process_material = SubResource("ParticleProcessMaterial_nu6ym")
+texture = ExtResource("3_ex5m2")
+lifetime = 0.3
+randomness = 0.5
+
+[node name="BeamParticles" type="GPUParticles2D" parent="."]
+position = Vector2(750, 0)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_ae627")
+texture = ExtResource("3_ex5m2")
+lifetime = 0.3
+preprocess = 1.0
+randomness = 1.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -10,7 +10,6 @@ const BEAM = preload("res://scenes/beam.tscn")
 @onready var body: Sprite2D = $Body
 
 
-
 var ammo : int = 10
 var ready_to_shoot : bool = false
 var currently_shooting : bool = false

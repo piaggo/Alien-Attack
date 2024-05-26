@@ -45,6 +45,7 @@ one_shot = true
 autostart = true
 
 [node name="RetroExplosion" parent="." instance=ExtResource("4_83pww")]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_8uhpt")
