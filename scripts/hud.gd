@@ -6,15 +6,12 @@ extends Control
 @onready var boost = $Boost
 @onready var rockets = $Rockets
 @onready var BossHealthBar = $BossHealthBar
+@onready var sentrys: Control = $Sentrys
 
 
 func _ready():
-	if Global.selected_player_ship.secondary_fire == "Rocket":
-		var rocket_array = rockets.get_children()
-		for count in 2:
-			rocket_array[count + 1].visible = false
-	else:
-		rockets.visible = false
+	set_sentrys_visible(0)
+	set_rockets_visible(0)
 
 
 func set_score_label(new_score: int) -> void:
@@ -57,3 +54,12 @@ func set_boss_bar_max(new_max: int) -> void:
 
 func set_boss_bar_value(new_value: int) -> void:
 	BossHealthBar.value = new_value
+
+func set_sentrys_visible(number: int) -> void:
+	var sentry_array = sentrys.get_children()
+	for count in 3:
+		sentry_array[count].visible = false
+	for count in number:
+		if count > 2:
+			return
+		sentry_array[count].visible = true

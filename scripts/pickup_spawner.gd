@@ -4,6 +4,7 @@ const BOOST_PICKUP = preload("res://scenes/boost_pickup.tscn")
 const SCHIELD_PICKUP = preload("res://scenes/schield_pickup.tscn")
 const LIVE_PICKUP = preload("res://scenes/live_pickup.tscn")
 const ROCKET_PICKUP = preload("res://scenes/rocket_pickup.tscn")
+const SENTRY_PICKUP = preload("res://scenes/sentry_pickup.tscn")
 
 var all_pickups = [BOOST_PICKUP,SCHIELD_PICKUP,LIVE_PICKUP]
 var all_pickups_no_lives = [BOOST_PICKUP,SCHIELD_PICKUP]
@@ -17,6 +18,9 @@ func set_random_list():
 	if Global.selected_player_ship.secondary_fire == "Rocket":
 		all_pickups.append(ROCKET_PICKUP)
 		all_pickups_no_lives.append(ROCKET_PICKUP)
+	if Global.selected_player_ship.secondary_fire == "Sentry":
+		all_pickups.append(SENTRY_PICKUP)
+		all_pickups_no_lives.append(SENTRY_PICKUP)
 	print("drops set")
 
 
@@ -48,4 +52,9 @@ func spawnRocket(spawnPosition : Vector2) -> void:
 	var rocket_instance = ROCKET_PICKUP.instantiate()
 	call_deferred("add_child",rocket_instance)
 	rocket_instance.global_position = spawnPosition
+
+func spawnSentry(spawnPosition : Vector2) -> void:
+	var sentry_instance = SENTRY_PICKUP.instantiate()
+	call_deferred("add_child",sentry_instance)
+	sentry_instance.global_position = spawnPosition
 #endregion

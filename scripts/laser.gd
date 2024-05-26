@@ -28,7 +28,10 @@ func _on_area_entered(area):
 		area.die("Player")
 	if area.has_method("boss_take_damage"):
 		explode()
-		area.boss_take_damage(1)
+		if Global.selected_player_ship.name == "Turtle":
+			area.boss_take_damage(2)
+		else:
+			area.boss_take_damage(1)
 
 
 func explode():

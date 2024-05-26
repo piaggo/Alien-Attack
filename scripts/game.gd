@@ -1,9 +1,5 @@
 extends Node2D
 
-var lives = 3
-var score = 0
-
-
 @onready var player = $Player
 @onready var hud = $UI/HUD
 @onready var ui = $UI
@@ -19,7 +15,8 @@ var score = 0
 @onready var pickup_spawner = $PickupSpawner
 
 var asteroidKillCount = 0
-
+var lives = 3
+var score = 0
 #Camera Shake
 var randomStrenght: float = 20.0
 var shakeFade: float = 1.0
@@ -48,6 +45,10 @@ func _ready():
 	hud.set_boost_icon_visibility(false)
 	hud.set_shield_icon_visibility(false)
 	hud.set_boss_bar_visible(false)
+	if Global.selected_player_ship.secondary_fire == "Sentry":
+		hud.set_sentrys_visible(player.numberofsentries)
+	if Global.selected_player_ship.secondary_fire == "Rocket":
+		hud.set_rockets_visible(player.numberofrockets)
 
 
 func _on_player_took_damage():
@@ -121,14 +122,19 @@ func _on_player_boostdown_signal():
 	hud.boost_icon_blink(60, 5)
 
 
-# ROCKETS
-func _on_player_rocket_shot():
-	hud.set_rockets_visible(player.numberofrockets)
-	rocket_shot_sound.play()
+# Secondarys
+func _on_player_secondary_used() -> void:
+	if Global.selected_player_ship.secondary_fire == "Rocket":
+		hud.set_rockets_visible(player.numberofrockets)
+		rocket_shot_sound.play()
+	if Global.selected_player_ship.secondary_fire == "Sentry":
+		hud.set_sentrys_visible(player.numberofsentries)
 
-
-func _on_player_rocket_reload():
-	hud.set_rockets_visible(player.numberofrockets)
+func _on_player_secondary_reload() -> void:
+	if Global.selected_player_ship.secondary_fire == "Rocket":
+		hud.set_rockets_visible(player.numberofrockets)
+	if Global.selected_player_ship.secondary_fire == "Sentry":
+		hud.set_sentrys_visible(player.numberofsentries)
 
 
 func _on_boss_timer_timeout():
@@ -157,7 +163,11 @@ func _on_boss_defeated():
 	pickup_spawner.spawnShield(Vector2(1200,300))
 	pickup_spawner.spawnBoost(Vector2(1150,400))
 	pickup_spawner.spawnLive(Vector2(1200,500))
-	pickup_spawner.spawnRocket(Vector2(1150,600))
+	if Global.selected_player_ship.secondary_fire == "Sentry":
+		pickup_spawner.spawnSentry(Vector2(1150,600))
+	if Global.selected_player_ship.secondary_fire == "Rocket":
+		pickup_spawner.spawnRocket(Vector2(1150,600))
+
 	await get_tree().create_timer(5).timeout
 	EnemySpawner.allow_enemies_spawn = true
 	EnemySpawner.reset_spawn_timers()

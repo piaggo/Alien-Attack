@@ -6,9 +6,11 @@ signal shieldupSignal
 signal boostupSignal
 signal shielddownSignal
 signal boostdownSignal
-signal rocketShot
-signal rocketReload
+#signal rocketShot
+#signal rocketReload
 signal liveUpSignal
+signal secondaryReload
+signal secondaryUsed
 
 
 var boostup: bool = false
@@ -20,7 +22,8 @@ var invul_frames : bool = false
 var enable_auto_shoot : bool = true
 
 
-@export var numberofrockets = 0
+@export var numberofrockets = 1
+@export var numberofsentries = 1
 
 
 @onready var rocket_container = $RocketContainer
@@ -36,6 +39,7 @@ var enable_auto_shoot : bool = true
 const ROCKET = preload("res://scenes/rocket.tscn")
 const SHIELD = preload("res://scenes/shield.tscn")
 const LASER = preload("res://scenes/laser.tscn")
+const DRONE = preload("res://scenes/drone.tscn")
 
 
 func _ready() -> void:
@@ -51,11 +55,13 @@ func _process(_delta):
 		enable_auto_shoot = true
 	else:
 		enable_auto_shoot = false
-	#if Input.is_action_just_pressed("enable_autoshoot"):
-		#enable_auto_shoot = !enable_auto_shoot
+
 	if Global.selected_player_ship.secondary_fire == "Rocket":
 		if Input.is_action_just_pressed("secondary") && numberofrockets > 0:
 			shoot_rocket()
+	if Global.selected_player_ship.secondary_fire == "Sentry":
+		if Input.is_action_just_pressed("secondary") && numberofsentries > 0:
+			deploy_sentry()
 
 
 func _physics_process(_delta):
@@ -101,7 +107,7 @@ func shoot_rocket():
 	if numberofrockets == 3:
 		RocketReloadTimer.start()
 	numberofrockets -= 1
-	emit_signal("rocketShot")
+	emit_signal("secondaryUsed")
 	#create instance of scene
 	var rocket_instance = ROCKET.instantiate()
 	# add instance as child to game
@@ -109,6 +115,15 @@ func shoot_rocket():
 	rocket_instance.global_position.x = global_position.x + 80
 	rocket_instance.global_position.y = global_position.y
 	pewpew.play()
+
+func deploy_sentry():
+	var drone_instance = DRONE.instantiate()
+	# add instance as child to game
+	add_child(drone_instance)
+	drone_instance.global_position = global_position
+	numberofsentries -= 1
+	emit_signal("secondaryUsed")
+
 
 
 func take_damage():
@@ -182,7 +197,7 @@ func bosst_end() -> void:
 func _on_rocket_reload_timer_timeout():
 	if numberofrockets < 3:
 		numberofrockets += 1
-		emit_signal("rocketReload")
+		emit_signal("secondaryReload")
 	else:
 		RocketReloadTimer.stop()
 
@@ -190,7 +205,7 @@ func _on_rocket_reload_timer_timeout():
 func rocketPickup():
 	if numberofrockets < 3:
 		numberofrockets += 1
-		emit_signal("rocketReload")
+		emit_signal("secondaryReload")
 
 
 func liveup() -> void:
@@ -200,3 +215,8 @@ func liveup() -> void:
 func _on_laser_timer_timeout():
 	if enable_auto_shoot:
 		shoot_laser()
+
+func sentryup() -> void:
+	if numberofsentries < 3:
+		numberofsentries += 1
+		emit_signal("secondaryReload")

@@ -87,7 +87,7 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_kqwun")
 theme_override_font_sizes/font_size = 18
-text = "Shoot Laser (Hold)"
+text = "Shoot Primary (Hold)"
 horizontal_alignment = 1
 uppercase = true
 
@@ -116,7 +116,7 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_jqih2")
 theme_override_font_sizes/font_size = 18
-text = "Shoot Rockets"
+text = "Use Secondary"
 horizontal_alignment = 1
 uppercase = true
 
@@ -180,6 +180,7 @@ stretch_mode = 3
 layout_mode = 2
 
 [node name="MarginContainerRight" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -235,6 +236,7 @@ texture = ExtResource("12_83q87")
 stretch_mode = 3
 
 [node name="MarginContainerLeft" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -627.0
 offset_top = -340.0

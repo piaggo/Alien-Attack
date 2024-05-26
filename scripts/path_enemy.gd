@@ -15,3 +15,5 @@ func _process(delta):
 	pathfollow.progress_ratio -= 0.25 * delta * speed_modifier
 	if pathfollow.progress_ratio <= 0:
 		queue_free()
+
+

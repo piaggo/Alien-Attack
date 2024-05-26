@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0rc8d2r5esc"]
+
+[ext_resource type="Script" path="res://scripts/drone.gd" id="1_6i016"]
+[ext_resource type="Texture2D" uid="uid://df1l7s06f8qmy" path="res://assets/textures/drone/spaceBuilding_015.png" id="1_xqhah"]
+[ext_resource type="Texture2D" uid="uid://cwrdfw401yc1" path="res://assets/textures/drone/spaceBuilding_019.png" id="2_yst1h"]
+[ext_resource type="PackedScene" uid="uid://dpqbou14ljw2j" path="res://scenes/retro_explosion.tscn" id="4_83pww"]
+[ext_resource type="AudioStream" uid="uid://bhfirdocnbu2s" path="res://assets/audio/sfx_laser1.ogg" id="5_8uhpt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ye142"]
+radius = 400.0
+height = 1000.0
+
+[node name="drone" type="Area2D"]
+top_level = true
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_6i016")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(400, 0)
+shape = SubResource("CapsuleShape2D_ye142")
+debug_color = Color(0.72916, 0.20479, 0.258132, 0.42)
+
+[node name="Body" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xqhah")
+
+[node name="Pivot" type="Marker2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Gun" type="Sprite2D" parent="Pivot"]
+scale = Vector2(1.625, 1.625)
+texture = ExtResource("2_yst1h")
+
+[node name="Barrel" type="Marker2D" parent="Pivot/Gun"]
+unique_name_in_owner = true
+position = Vector2(-7.8008e-07, -17.8462)
+rotation = -1.5708
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[node name="RetroExplosion" parent="." instance=ExtResource("4_83pww")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8uhpt")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -3,6 +3,7 @@ extends Area2D
 signal died(killer : String, deathPosition : Vector2)
 
 @export var speed = 200
+@export var on_path : bool = false
 const ENEMY_LASER = preload("res://scenes/enemy_laser.tscn")
 @onready var RetroExplosion = $RetroExplosion
 @onready var sprite_2d = $Sprite2D

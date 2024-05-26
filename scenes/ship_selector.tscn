@@ -250,6 +250,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="SecondaryWeapon/VBoxContainer/Control"]
 layout_direction = 3
 layout_mode = 2
+offset_left = -133.0
 offset_right = 35.0
 offset_bottom = 102.0
 scale = Vector2(0.6, 0.6)
@@ -280,6 +281,20 @@ theme_override_fonts/font = SubResource("SystemFont_bq05s")
 theme_override_font_sizes/font_size = 32
 text = "FIGHT"
 
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 195.0
+offset_bottom = 62.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = SubResource("SystemFont_bq05s")
+theme_override_font_sizes/font_size = 32
+text = "< "
+
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer3/PreviousShipButton" to="." method="_on_previous_ship_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/NextShipButton" to="." method="_on_next_ship_button_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -22,7 +22,6 @@ func _on_area_entered(area):
 		explode()
 	if area.has_method("boss_take_damage"):
 		explode()
-		
 
 
 func explode():

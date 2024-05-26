@@ -75,5 +75,13 @@ func update_stats() -> void:
 func update_powers() -> void:
 	power_name_label.text = shiparray[index].secondary_fire
 	texture_rect_power.texture = load( shiparray[index].secondary_fire_sprite)
+	if shiparray[index].secondary_fire == "Rocket":
+		texture_rect_power.position.x = 225
+	if shiparray[index].secondary_fire == "Sentry":
+		texture_rect_power.position.x = 160
 	power_description.text = shiparray[index].secondary_fire_Desription
 
+
+
+func _on_back_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

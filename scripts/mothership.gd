@@ -7,6 +7,7 @@ signal boss_took_damage
 @export var maxhealth = 100
 @export var hspeed = 200
 @export var vspeed = 80
+@export var on_path : bool = false
 var v_direction : int = -1
 const ENEMY_LASER = preload("res://scenes/enemy_laser.tscn")
 

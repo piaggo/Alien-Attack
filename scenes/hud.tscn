@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddh7xwyrrwk0x"]
+[gd_scene load_steps=13 format=3 uid="uid://ddh7xwyrrwk0x"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_3krv1"]
 [ext_resource type="FontFile" uid="uid://dnm1nwr8ekeff" path="res://assets/font/Kenney Blocks.ttf" id="1_kytpv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://s8eb761euudq" path="res://assets/textures/powerupBlue_shield.png" id="4_dfyju"]
 [ext_resource type="Texture2D" uid="uid://cn4bxfo0dj428" path="res://assets/textures/powerupGreen_bolt.png" id="5_15stq"]
 [ext_resource type="Texture2D" uid="uid://dlkalw8hentlp" path="res://assets/textures/spaceMissiles_004.png" id="6_d2xtr"]
+[ext_resource type="Texture2D" uid="uid://df1l7s06f8qmy" path="res://assets/textures/drone/spaceBuilding_015.png" id="7_m2af4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mo4xk"]
 font = ExtResource("1_kytpv")
@@ -141,3 +142,38 @@ theme_override_styles/background = SubResource("StyleBoxFlat_oy5dv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_lqlvl")
 step = 1.0
 show_percentage = false
+
+[node name="Sentrys" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sentry" type="TextureRect" parent="Sentrys"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 650.0
+offset_right = 188.0
+offset_bottom = 690.0
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_m2af4")
+
+[node name="Sentry2" type="TextureRect" parent="Sentrys"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 650.0
+offset_right = 218.0
+offset_bottom = 690.0
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_m2af4")
+
+[node name="Sentry3" type="TextureRect" parent="Sentrys"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 650.0
+offset_right = 248.0
+offset_bottom = 690.0
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_m2af4")

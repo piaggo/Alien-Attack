@@ -10,7 +10,6 @@ var player_ship_1 = {
 	"kill_asteroids" : false,
 	"sprite" : "res://assets/textures/ships/playerBlue1.png",
 	"secondary_fire" : "Rocket",
-	"secondary_image" : "res://assets/textures/spaceMissiles_004.png",
 	"secondary_reload_time" : 8,
 	"secondary_fire_sprite" : "res://assets/textures/spaceMissiles_004.png",
 	"secondary_fire_Desription" : "A LOT"
@@ -25,7 +24,6 @@ var player_ship_2 = {
 	"kill_asteroids" : false,
 	"sprite" : "res://assets/textures/ships/playerBlue2.png",
 	"secondary_fire" : "Rocket",
-	"secondary_image" : "res://assets/textures/spaceMissiles_004.png",
 	"secondary_reload_time" : 12,
 	"secondary_fire_sprite" : "res://assets/textures/spaceMissiles_004.png",
 	"secondary_fire_Desription" : "Few"
@@ -39,13 +37,12 @@ var player_ship_3 = {
 	"firerate" : 0.30,
 	"kill_asteroids" : true,
 	"sprite" : "res://assets/textures/ships/playerBlue3.png",
-	"secondary_fire" : "nothing",
-	"secondary_image" : "tbd",
+	"secondary_fire" : "Sentry",
 	"secondary_reload_time" : 10,
-	"secondary_fire_sprite" : "",
-	"secondary_fire_Desription" : "TBD"
-
+	"secondary_fire_sprite" : "res://assets/textures/drone/spaceBuilding_015.png",
+	"secondary_fire_Desription" : "Stationary Cannon that shoots enemies"
 }
+
 
 var save_data:SaveData
 var selected_player_ship : Dictionary = player_ship_2.duplicate(true)
