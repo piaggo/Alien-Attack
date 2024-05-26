@@ -9,9 +9,12 @@ extends Control
 
 
 func _ready():
-	var rocket_array = rockets.get_children()
-	for count in 2:
-		rocket_array[count + 1].visible = false
+	if Global.selected_player_ship.secondary_fire == "Rocket":
+		var rocket_array = rockets.get_children()
+		for count in 2:
+			rocket_array[count + 1].visible = false
+	else:
+		rockets.visible = false
 
 
 func set_score_label(new_score: int) -> void:

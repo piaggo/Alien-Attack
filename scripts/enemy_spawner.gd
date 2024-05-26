@@ -13,6 +13,7 @@ const ASTEROID_SMALL = preload("res://scenes/asteroid_small.tscn")
 const MOTHERSHIP = preload("res://scenes/mothership.tscn")
 
 const DEFAULT_SPAWN_TIMER : int = 1
+const DEFAULT_SPAWN_TIMER_ASTEROIDS : int = 3
 const DEFAULT_SPAWN_PATH_TIMER : int = 4
 
 @export var allow_enemies_spawn : bool = true
@@ -110,3 +111,4 @@ func spawn_boss():
 func reset_spawn_timers():
 	SpawnTimer.wait_time = DEFAULT_SPAWN_TIMER
 	FollowPathTimer.wait_time = DEFAULT_SPAWN_PATH_TIMER
+	AsteroidSpawnTimer.wait_time = DEFAULT_SPAWN_TIMER_ASTEROIDS

@@ -110,7 +110,6 @@ stream = ExtResource("4_e3box")
 
 [node name="RocketReloadTimer" type="Timer" parent="Timers"]
 wait_time = 15.0
-autostart = true
 
 [node name="BlinkAnimation" type="AnimationPlayer" parent="."]
 libraries = {

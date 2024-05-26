@@ -20,7 +20,7 @@ var invul_frames : bool = false
 var enable_auto_shoot : bool = true
 
 
-@export var numberofrockets = 1
+@export var numberofrockets = 0
 
 
 @onready var rocket_container = $RocketContainer
