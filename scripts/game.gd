@@ -14,11 +14,15 @@ extends Node2D
 @onready var camera_2d = $Camera2D
 @onready var pickup_spawner = $PickupSpawner
 @onready var sentry_deploy_sound: AudioStreamPlayer = $Audio/SentryDeploySound
+@onready var pause: Control = $Pause
+
+
 
 
 var asteroidKillCount = 0
-var lives = 3
-var score = 0
+var lives := 3
+var score := 0
+var paused := false
 #Camera Shake
 var randomStrenght: float = 20.0
 var shakeFade: float = 1.0
@@ -31,6 +35,20 @@ func _process(delta):
 	if shakeStrenght > 0:
 		shakeStrenght = lerpf(shakeStrenght,0,shakeFade * delta )
 		camera_2d.offset = random_camera_offset()
+
+	if Input.is_action_just_pressed("pause"):
+		pausemenu()
+
+
+func pausemenu() -> void:
+	if paused:
+		pause.hide()
+		Engine.time_scale = 1
+	else:
+		pause.show()
+		Engine.time_scale = 0
+	paused = !paused
+
 
 
 func random_camera_offset() -> Vector2:

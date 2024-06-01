@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c0q42auay2203"]
+[gd_scene load_steps=17 format=3 uid="uid://c0q42auay2203"]
 
 [ext_resource type="Texture2D" uid="uid://t7l1de01ia7s" path="res://assets/textures/bg.png" id="1_eo3xe"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_wnldx"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://cmfg0xdff6wal" path="res://assets/audio/BossSpawn.ogg" id="10_ajfv8"]
 [ext_resource type="AudioStream" uid="uid://dj6r1oku47fg6" path="res://assets/audio/LiveUpSound.wav" id="12_et3tt"]
 [ext_resource type="AudioStream" uid="uid://c0qrpx0ctvra8" path="res://assets/audio/SentryDeploy.ogg" id="13_sss2r"]
+[ext_resource type="PackedScene" uid="uid://b3qcgajmhtt2b" path="res://scenes/pause.tscn" id="14_my8mv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyalr"]
 size = Vector2(100, 1514)
@@ -35,6 +36,16 @@ offset_right = 1332.0
 offset_bottom = 772.0
 texture = ExtResource("1_eo3xe")
 stretch_mode = 1
+
+[node name="Pause" parent="." node_paths=PackedStringArray("resume_scene") instance=ExtResource("14_my8mv")]
+process_mode = 1
+visible = false
+offset_left = 644.0
+offset_top = 363.0
+offset_right = 644.0
+offset_bottom = 363.0
+mouse_filter = 1
+resume_scene = NodePath("..")
 
 [node name="Player" parent="." instance=ExtResource("2_5a3cq")]
 position = Vector2(140, 384)

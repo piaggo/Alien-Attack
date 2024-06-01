@@ -21,6 +21,7 @@ func _ready() -> void:
 	texture_rect_power.texture = load(shiparray[index].secondary_fire_sprite)
 	shipname_label.text = shiparray[index].name
 	update_stats()
+	Global.unlock_ships()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
