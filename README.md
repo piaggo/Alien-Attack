@@ -34,7 +34,7 @@ Download the "Alien-attack.exe" from the latest Release and have fun
 
 Made with GODOT 4.2.2 [Homepage](https://godotengine.org/)
 
-Sounds and Sprites from [Kenny.nl](https://kenney.nl/assets)
+Sounds and Sprites from [Kenney.nl](https://kenney.nl/assets)
 
 Background Musik [A Magical Journey Through Space by Leonell Cassio](https://www.free-stock-music.com/leonell-cassio-a-magical-journey-through-space.html)
 
