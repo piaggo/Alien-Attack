@@ -2,3 +2,4 @@
 .godot/
 screenshots/*.import
 web/*.import
+/dist
