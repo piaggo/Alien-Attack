@@ -35,7 +35,7 @@ window/stretch/mode="canvas_items"
 [editor]
 
 movie_writer/movie_file="D:/godot/screencaptures/screencapture.avi"
-movie_writer/fps=144
+movie_writer/disable_vsync=true
 
 [editor_plugins]
 

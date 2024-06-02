@@ -1,0 +1,164 @@
+[gd_scene load_steps=9 format=3 uid="uid://bqcog6f1i8bxy"]
+
+[ext_resource type="Script" path="res://scripts/background.gd" id="1_3cipd"]
+[ext_resource type="Texture2D" uid="uid://t7l1de01ia7s" path="res://assets/textures/bg.png" id="1_repbh"]
+[ext_resource type="Texture2D" uid="uid://dlhslx270g6ts" path="res://assets/Background/spaceStation_017.png" id="3_aecq2"]
+[ext_resource type="Texture2D" uid="uid://2dlr2millt4g" path="res://assets/Background/spaceAstronauts_016.png" id="4_hulnr"]
+[ext_resource type="Texture2D" uid="uid://dobntkawdnltn" path="res://assets/Background/Planet_1.png" id="4_kf1dh"]
+[ext_resource type="Texture2D" uid="uid://v50o7jih3a0r" path="res://assets/Background/Planet_2.png" id="5_hjtme"]
+[ext_resource type="Texture2D" uid="uid://ckbi6h4hcm8gb" path="res://assets/Background/Blackhole.png" id="6_cuqwu"]
+[ext_resource type="Texture2D" uid="uid://dijreq1uweo0m" path="res://assets/Background/Planet_3.png" id="7_lvvwa"]
+
+[node name="Background" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+script = ExtResource("1_3cipd")
+speed = -40
+left_limit = -1280
+
+[node name="Background2" type="TextureRect" parent="Background"]
+offset_left = 1280.0
+offset_right = 2560.0
+offset_bottom = 720.0
+texture = ExtResource("1_repbh")
+stretch_mode = 1
+
+[node name="Background" type="TextureRect" parent="Background"]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_repbh")
+stretch_mode = 1
+
+[node name="Midground" type="Node2D" parent="."]
+script = ExtResource("1_3cipd")
+speed = -30
+left_limit = -7500
+
+[node name="Spacestation" type="TextureRect" parent="Midground"]
+self_modulate = Color(1, 1, 1, 0.490196)
+texture_filter = 1
+offset_left = 1499.0
+offset_top = 405.0
+offset_right = 1843.0
+offset_bottom = 982.0
+rotation = 0.383972
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_aecq2")
+stretch_mode = 2
+
+[node name="Astronaut" type="TextureRect" parent="Midground/Spacestation"]
+self_modulate = Color(1, 1, 1, 0.490196)
+texture_filter = 1
+offset_left = 347.173
+offset_top = 334.288
+offset_right = 409.173
+offset_bottom = 420.288
+rotation = -0.881292
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_hulnr")
+stretch_mode = 2
+
+[node name="Astronaut2" type="TextureRect" parent="Midground/Spacestation"]
+self_modulate = Color(1, 1, 1, 0.490196)
+texture_filter = 1
+offset_left = 0.837891
+offset_top = 420.29
+offset_right = 62.8379
+offset_bottom = 506.29
+rotation = 3.19608
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_hulnr")
+stretch_mode = 2
+
+[node name="Astronaut3" type="TextureRect" parent="Midground/Spacestation"]
+self_modulate = Color(1, 1, 1, 0.490196)
+texture_filter = 1
+offset_right = 62.0
+offset_bottom = 86.0
+rotation = 0.383972
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_hulnr")
+stretch_mode = 2
+
+[node name="Spacestation2" type="TextureRect" parent="Midground"]
+self_modulate = Color(1, 1, 1, 0.490196)
+texture_filter = 1
+offset_left = 5680.0
+offset_top = 14.9999
+offset_right = 6024.0
+offset_bottom = 592.0
+rotation = 1.3439
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_aecq2")
+stretch_mode = 2
+
+[node name="Astronaut" type="TextureRect" parent="Midground/Spacestation2"]
+self_modulate = Color(1, 1, 1, 0.490196)
+texture_filter = 1
+offset_left = 347.173
+offset_top = 334.288
+offset_right = 409.173
+offset_bottom = 420.288
+rotation = -0.881292
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_hulnr")
+stretch_mode = 2
+
+[node name="Astronaut2" type="TextureRect" parent="Midground/Spacestation2"]
+self_modulate = Color(1, 1, 1, 0.490196)
+texture_filter = 1
+offset_left = 0.837891
+offset_top = 420.29
+offset_right = 62.8379
+offset_bottom = 506.29
+rotation = 3.19608
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_hulnr")
+stretch_mode = 2
+
+[node name="Astronaut3" type="TextureRect" parent="Midground/Spacestation2"]
+self_modulate = Color(1, 1, 1, 0.490196)
+texture_filter = 1
+offset_right = 62.0
+offset_bottom = 86.0
+rotation = 0.383972
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_hulnr")
+stretch_mode = 2
+
+[node name="Planet1" type="TextureRect" parent="Midground"]
+texture_filter = 1
+offset_left = 1146.0
+offset_top = -427.0
+offset_right = 1846.0
+offset_bottom = 273.0
+texture = ExtResource("4_kf1dh")
+
+[node name="Planet2" type="TextureRect" parent="Midground"]
+texture_filter = 1
+custom_minimum_size = Vector2(700, 700)
+offset_left = 3020.0
+offset_top = 521.0
+offset_right = 3720.0
+offset_bottom = 1221.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_hjtme")
+
+[node name="Blackhole" type="TextureRect" parent="Midground"]
+texture_filter = 1
+offset_left = 4367.0
+offset_top = -241.0
+offset_right = 5114.0
+offset_bottom = 453.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_cuqwu")
+
+[node name="Planet3" type="TextureRect" parent="Midground"]
+texture_filter = 1
+custom_minimum_size = Vector2(700, 700)
+offset_left = 6195.0
+offset_top = 564.0
+offset_right = 6895.0
+offset_bottom = 1264.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_lvvwa")

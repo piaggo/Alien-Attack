@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://c0q42auay2203"]
 
-[ext_resource type="Texture2D" uid="uid://t7l1de01ia7s" path="res://assets/textures/bg.png" id="1_eo3xe"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_wnldx"]
 [ext_resource type="PackedScene" uid="uid://1508jndsj5v" path="res://scenes/player.tscn" id="2_5a3cq"]
 [ext_resource type="PackedScene" uid="uid://ddh7xwyrrwk0x" path="res://scenes/hud.tscn" id="2_koo4m"]
+[ext_resource type="PackedScene" uid="uid://bqcog6f1i8bxy" path="res://scenes/background.tscn" id="3_agxi4"]
 [ext_resource type="PackedScene" uid="uid://yfyg0je08hvn" path="res://scenes/enemy_spawner.tscn" id="3_n1ed2"]
 [ext_resource type="PackedScene" uid="uid://b4osu8v57mxvj" path="res://scenes/pickup_spawner.tscn" id="6_0ames"]
 [ext_resource type="AudioStream" uid="uid://61y3mpqi73e3" path="res://assets/audio/hit.wav" id="6_0ggj1"]
@@ -29,13 +29,7 @@ script = ExtResource("1_wnldx")
 
 [node name="HUD" parent="UI" instance=ExtResource("2_koo4m")]
 
-[node name="Background" type="TextureRect" parent="."]
-offset_left = -44.0
-offset_top = -40.0
-offset_right = 1332.0
-offset_bottom = 772.0
-texture = ExtResource("1_eo3xe")
-stretch_mode = 1
+[node name="Background" parent="." instance=ExtResource("3_agxi4")]
 
 [node name="Pause" parent="." node_paths=PackedStringArray("resume_scene") instance=ExtResource("14_my8mv")]
 process_mode = 1
