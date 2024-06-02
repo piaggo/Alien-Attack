@@ -49,6 +49,7 @@ stretch_mode = 2
 [node name="Astronaut" type="TextureRect" parent="Midground/Spacestation"]
 self_modulate = Color(1, 1, 1, 0.490196)
 texture_filter = 1
+layout_mode = 0
 offset_left = 347.173
 offset_top = 334.288
 offset_right = 409.173
@@ -61,6 +62,7 @@ stretch_mode = 2
 [node name="Astronaut2" type="TextureRect" parent="Midground/Spacestation"]
 self_modulate = Color(1, 1, 1, 0.490196)
 texture_filter = 1
+layout_mode = 0
 offset_left = 0.837891
 offset_top = 420.29
 offset_right = 62.8379
@@ -73,6 +75,7 @@ stretch_mode = 2
 [node name="Astronaut3" type="TextureRect" parent="Midground/Spacestation"]
 self_modulate = Color(1, 1, 1, 0.490196)
 texture_filter = 1
+layout_mode = 0
 offset_right = 62.0
 offset_bottom = 86.0
 rotation = 0.383972
@@ -95,6 +98,7 @@ stretch_mode = 2
 [node name="Astronaut" type="TextureRect" parent="Midground/Spacestation2"]
 self_modulate = Color(1, 1, 1, 0.490196)
 texture_filter = 1
+layout_mode = 0
 offset_left = 347.173
 offset_top = 334.288
 offset_right = 409.173
@@ -107,6 +111,7 @@ stretch_mode = 2
 [node name="Astronaut2" type="TextureRect" parent="Midground/Spacestation2"]
 self_modulate = Color(1, 1, 1, 0.490196)
 texture_filter = 1
+layout_mode = 0
 offset_left = 0.837891
 offset_top = 420.29
 offset_right = 62.8379
@@ -119,6 +124,7 @@ stretch_mode = 2
 [node name="Astronaut3" type="TextureRect" parent="Midground/Spacestation2"]
 self_modulate = Color(1, 1, 1, 0.490196)
 texture_filter = 1
+layout_mode = 0
 offset_right = 62.0
 offset_bottom = 86.0
 rotation = 0.383972
@@ -128,10 +134,10 @@ stretch_mode = 2
 
 [node name="Planet1" type="TextureRect" parent="Midground"]
 texture_filter = 1
-offset_left = 1146.0
-offset_top = -427.0
-offset_right = 1846.0
-offset_bottom = 273.0
+offset_left = 1283.0
+offset_top = -425.0
+offset_right = 1983.0
+offset_bottom = 275.0
 texture = ExtResource("4_kf1dh")
 
 [node name="Planet2" type="TextureRect" parent="Midground"]
