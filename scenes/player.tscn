@@ -1,38 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://1508jndsj5v"]
+[gd_scene load_steps=11 format=3 uid="uid://1508jndsj5v"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0nv4h"]
+[ext_resource type="Material" uid="uid://cs6as4kqji111" path="res://Materials/player.tres" id="2_mx40x"]
 [ext_resource type="Texture2D" uid="uid://bcem4wudnfnh5" path="res://assets/textures/ships/playerBlue1.png" id="2_uk76i"]
 [ext_resource type="AudioStream" uid="uid://hwqxqw2to0ge" path="res://assets/audio/sfx_laser2.wav" id="3_oiidw"]
 [ext_resource type="AudioStream" uid="uid://do2chr02jt012" path="res://assets/audio/sfx_twoTone.ogg" id="4_e3box"]
 [ext_resource type="AudioStream" uid="uid://bicjwqai3oyxs" path="res://assets/audio/boostpickup.ogg" id="5_6xjwk"]
-
-[sub_resource type="Gradient" id="Gradient_paj0w"]
-offsets = PackedFloat32Array(0, 0.477273, 1)
-colors = PackedColorArray(0.956863, 0.831373, 0.027451, 0, 0.909804, 0.439216, 0.105882, 1, 0.858824, 0.00784314, 0.192157, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2wrqc"]
-gradient = SubResource("Gradient_paj0w")
-
-[sub_resource type="Curve" id="Curve_kuo2b"]
-_data = [Vector2(0, 0.497658), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_rrnjl"]
-curve = SubResource("Curve_kuo2b")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a1rk4"]
-lifetime_randomness = 0.3
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(1, 15, 1)
-spread = 30.0
-initial_velocity_min = -200.0
-initial_velocity_max = -200.0
-gravity = Vector3(0, 0, 0)
-scale_min = 10.0
-scale_max = 10.0
-scale_curve = SubResource("CurveTexture_rrnjl")
-color_ramp = SubResource("GradientTexture1D_2wrqc")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fuwp5"]
 radius = 35.0571
@@ -83,7 +56,7 @@ script = ExtResource("1_0nv4h")
 position = Vector2(0.00760513, 34)
 rotation = -1.57408
 amount = 100
-process_material = SubResource("ParticleProcessMaterial_a1rk4")
+process_material = ExtResource("2_mx40x")
 lifetime = 0.3
 fixed_fps = 60
 

@@ -24,6 +24,7 @@ boot_splash/minimum_display_time=2500
 ShipStats="*res://scripts/ship_stats.gd"
 Global="*res://autoloads/global.gd"
 BackgroundMusic="*res://scenes/background_music.tscn"
+ParticlesCache="*res://scripts/ParticlesCache.gd"
 
 [display]
 
