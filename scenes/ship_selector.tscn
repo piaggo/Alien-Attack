@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddqh8hq16qfs0"]
+[gd_scene load_steps=9 format=3 uid="uid://ddqh8hq16qfs0"]
 
 [ext_resource type="Texture2D" uid="uid://peqgn81ew0ud" path="res://assets/textures/blue_background.png" id="1_4jllo"]
 [ext_resource type="Script" path="res://scripts/ship_selector.gd" id="1_8p30o"]
@@ -26,9 +26,6 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-
-[sub_resource type="SystemFont" id="SystemFont_bq05s"]
-font_names = PackedStringArray("Impact")
 
 [node name="ShipSelector" type="Control"]
 layout_mode = 3
@@ -269,7 +266,7 @@ offset_right = 730.0
 offset_bottom = 709.0
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_fonts/font = SubResource("SystemFont_bq05s")
+theme_override_fonts/font = ExtResource("3_5k25w")
 theme_override_font_sizes/font_size = 32
 text = "FIGHT"
 
