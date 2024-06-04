@@ -4,9 +4,13 @@ A Sidescroller Bullethell(light) Game - made to learn GODOT
 
 Base of the game is ALIEN-ATTACK from `Kaan Alpar`'s Course at [gamedev.tv](https://www.gamedev.tv/courses/godot-complete-2d)
 
-## To Play
+## How To Play
 
 Download the "Alien-attack.exe" from the latest Release and have fun
+
+You can play the latest release in your Browser on [https://piaggo.itch.io/alien-attack](https://piaggo.itch.io/alien-attack)
+
+Password: 'godot4rocks'
 
 ## Controls
 
