@@ -1,18 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddqh8hq16qfs0"]
+[gd_scene load_steps=10 format=3 uid="uid://ddqh8hq16qfs0"]
 
 [ext_resource type="Texture2D" uid="uid://peqgn81ew0ud" path="res://assets/textures/blue_background.png" id="1_4jllo"]
 [ext_resource type="Script" path="res://scripts/ship_selector.gd" id="1_8p30o"]
 [ext_resource type="Texture2D" uid="uid://bcem4wudnfnh5" path="res://assets/textures/ships/playerBlue1.png" id="2_xhfam"]
+[ext_resource type="FontFile" uid="uid://cyiotysjb37x3" path="res://assets/font/Kanit-ExtraBold.ttf" id="3_5k25w"]
 [ext_resource type="Texture2D" uid="uid://dlkalw8hentlp" path="res://assets/textures/spaceMissiles_004.png" id="4_4tvhk"]
-
-[sub_resource type="SystemFont" id="SystemFont_ojh4p"]
-font_names = PackedStringArray("Impact")
-
-[sub_resource type="SystemFont" id="SystemFont_44iof"]
-font_names = PackedStringArray("Impact")
-
-[sub_resource type="SystemFont" id="SystemFont_6mlqp"]
-font_names = PackedStringArray("Impact")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg503"]
 bg_color = Color(0.243137, 0.533333, 0.631373, 1)
@@ -85,7 +77,7 @@ layout_mode = 2
 [node name="PreviousShipButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
 custom_minimum_size = Vector2(50, 100)
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_ojh4p")
+theme_override_fonts/font = ExtResource("3_5k25w")
 theme_override_font_sizes/font_size = 48
 text = "<"
 
@@ -96,7 +88,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_44iof")
+theme_override_fonts/font = ExtResource("3_5k25w")
 theme_override_font_sizes/font_size = 24
 text = "Select your Ship"
 horizontal_alignment = 1
@@ -115,7 +107,7 @@ layout_mode = 2
 
 [node name="ShipnameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_44iof")
+theme_override_fonts/font = ExtResource("3_5k25w")
 theme_override_font_sizes/font_size = 24
 text = "Shipname"
 horizontal_alignment = 1
@@ -132,7 +124,7 @@ layout_mode = 2
 [node name="NextShipButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(50, 100)
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_ojh4p")
+theme_override_fonts/font = ExtResource("3_5k25w")
 theme_override_font_sizes/font_size = 48
 text = ">"
 
@@ -154,14 +146,14 @@ alignment = 1
 
 [node name="Stats" type="Label" parent="Stats/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_6mlqp")
+theme_override_fonts/font = ExtResource("3_5k25w")
 theme_override_font_sizes/font_size = 32
 text = "Stats"
 uppercase = true
 
 [node name="Speed" type="Label" parent="Stats/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_6mlqp")
+theme_override_fonts/font = ExtResource("3_5k25w")
 theme_override_font_sizes/font_size = 24
 text = "Speed"
 uppercase = true
@@ -177,7 +169,7 @@ show_percentage = false
 
 [node name="Projectile Speed" type="Label" parent="Stats/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_6mlqp")
+theme_override_fonts/font = ExtResource("3_5k25w")
 theme_override_font_sizes/font_size = 24
 text = "Projectile Speed"
 uppercase = true
@@ -194,7 +186,7 @@ show_percentage = false
 
 [node name="Firerate" type="Label" parent="Stats/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_6mlqp")
+theme_override_fonts/font = ExtResource("3_5k25w")
 theme_override_font_sizes/font_size = 24
 text = "Firerate"
 uppercase = true
@@ -229,7 +221,7 @@ alignment = 1
 
 [node name="Powers" type="Label" parent="SecondaryWeapon/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_6mlqp")
+theme_override_fonts/font = ExtResource("3_5k25w")
 theme_override_font_sizes/font_size = 32
 text = "Powers"
 horizontal_alignment = 2
@@ -237,7 +229,7 @@ uppercase = true
 
 [node name="PowerNameLabel" type="Label" parent="SecondaryWeapon/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_6mlqp")
+theme_override_fonts/font = ExtResource("3_5k25w")
 theme_override_font_sizes/font_size = 24
 text = "Rockets"
 horizontal_alignment = 2
@@ -261,7 +253,7 @@ stretch_mode = 2
 [node name="PowerDescription" type="Label" parent="SecondaryWeapon/VBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_6mlqp")
+theme_override_fonts/font = ExtResource("3_5k25w")
 theme_override_font_sizes/font_size = 24
 text = "A lot!"
 horizontal_alignment = 2
@@ -290,7 +282,7 @@ offset_right = 195.0
 offset_bottom = 62.0
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_fonts/font = SubResource("SystemFont_bq05s")
+theme_override_fonts/font = ExtResource("3_5k25w")
 theme_override_font_sizes/font_size = 32
 text = "< "
 

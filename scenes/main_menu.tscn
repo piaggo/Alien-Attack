@@ -1,16 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl4lvssnb2ptu"]
+[gd_scene load_steps=4 format=3 uid="uid://bl4lvssnb2ptu"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_k6efg"]
 [ext_resource type="Texture2D" uid="uid://peqgn81ew0ud" path="res://assets/textures/blue_background.png" id="1_spyj0"]
-
-[sub_resource type="SystemFont" id="SystemFont_7apdl"]
-font_names = PackedStringArray("Impact")
-
-[sub_resource type="SystemFont" id="SystemFont_byle3"]
-font_names = PackedStringArray("Impact")
-
-[sub_resource type="SystemFont" id="SystemFont_oo662"]
-font_names = PackedStringArray("Impact")
+[ext_resource type="FontFile" uid="uid://cyiotysjb37x3" path="res://assets/font/Kanit-ExtraBold.ttf" id="3_jmbsb"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -52,7 +44,7 @@ layout_mode = 2
 
 [node name="Titel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_7apdl")
+theme_override_fonts/font = ExtResource("3_jmbsb")
 theme_override_font_sizes/font_size = 80
 text = "ALIEN ATTACK"
 horizontal_alignment = 1
@@ -64,7 +56,7 @@ alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 25
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
@@ -75,7 +67,7 @@ layout_mode = 2
 
 [node name="StartButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_byle3")
+theme_override_fonts/font = ExtResource("3_jmbsb")
 theme_override_font_sizes/font_size = 32
 text = "Start Game"
 
@@ -84,7 +76,7 @@ layout_mode = 2
 
 [node name="ShowControlsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_byle3")
+theme_override_fonts/font = ExtResource("3_jmbsb")
 theme_override_font_sizes/font_size = 32
 text = "Controls
 "
@@ -94,14 +86,14 @@ layout_mode = 2
 
 [node name="Highscore" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_byle3")
+theme_override_fonts/font = ExtResource("3_jmbsb")
 theme_override_font_sizes/font_size = 32
 text = "Highscore
 "
 
 [node name="Highscore Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_oo662")
+theme_override_fonts/font = ExtResource("3_jmbsb")
 theme_override_font_sizes/font_size = 18
 text = "
 "
@@ -110,7 +102,7 @@ uppercase = true
 
 [node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_byle3")
+theme_override_fonts/font = ExtResource("3_jmbsb")
 theme_override_font_sizes/font_size = 32
 text = "Exit"
 

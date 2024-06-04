@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bunn0bxfmqbo1"]
+[gd_scene load_steps=6 format=3 uid="uid://bunn0bxfmqbo1"]
 
 [ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_60tvl"]
+[ext_resource type="FontFile" uid="uid://cyiotysjb37x3" path="res://assets/font/Kanit-ExtraBold.ttf" id="2_ao4uv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsdbo"]
 bg_color = Color(0.839216, 0.0431373, 0.152941, 0.513726)
@@ -15,12 +16,6 @@ font_size = 64
 [sub_resource type="LabelSettings" id="LabelSettings_75ti4"]
 font_size = 48
 font_color = Color(0.266667, 0.709804, 0.745098, 1)
-
-[sub_resource type="SystemFont" id="SystemFont_ocu10"]
-font_names = PackedStringArray("Impact")
-
-[sub_resource type="SystemFont" id="SystemFont_kh4x5"]
-font_names = PackedStringArray("Impact")
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -109,7 +104,7 @@ offset_right = -26.0
 offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = SubResource("SystemFont_ocu10")
+theme_override_fonts/font = ExtResource("2_ao4uv")
 theme_override_font_sizes/font_size = 48
 text = "RETRY"
 
@@ -126,7 +121,7 @@ offset_right = 211.0
 offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = SubResource("SystemFont_kh4x5")
+theme_override_fonts/font = ExtResource("2_ao4uv")
 theme_override_font_sizes/font_size = 48
 text = "GIVE UP"
 

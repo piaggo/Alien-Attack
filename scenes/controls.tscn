@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://8cavxehahlgp"]
+[gd_scene load_steps=15 format=3 uid="uid://8cavxehahlgp"]
 
 [ext_resource type="Script" path="res://scripts/controls.gd" id="1_tm7mp"]
+[ext_resource type="FontFile" uid="uid://cyiotysjb37x3" path="res://assets/font/Kanit-ExtraBold.ttf" id="2_wbqvb"]
 [ext_resource type="Texture2D" uid="uid://b0ky6l618pfx0" path="res://assets/textures/Controls/keyboard_arrows_all.png" id="2_ws7fq"]
 [ext_resource type="Texture2D" uid="uid://deig5qm772dbb" path="res://assets/textures/Controls/mouse_left.png" id="3_tfkgf"]
 [ext_resource type="Texture2D" uid="uid://byih415206fum" path="res://assets/textures/Controls/keyboard_space.png" id="4_dwkpi"]
@@ -14,18 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://bsphrqs366vlc" path="res://assets/textures/orb.png" id="13_8eklk"]
 
 [sub_resource type="SystemFont" id="SystemFont_0do0m"]
-font_names = PackedStringArray("Impact")
-
-[sub_resource type="SystemFont" id="SystemFont_kqwun"]
-font_names = PackedStringArray("Impact")
-
-[sub_resource type="SystemFont" id="SystemFont_jqih2"]
-font_names = PackedStringArray("Impact")
-
-[sub_resource type="SystemFont" id="SystemFont_xkpqd"]
-font_names = PackedStringArray("Impact")
-
-[sub_resource type="SystemFont" id="SystemFont_ls6i5"]
 font_names = PackedStringArray("Impact")
 
 [node name="Controls" type="Control"]
@@ -64,7 +53,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerMove"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_0do0m")
+theme_override_fonts/font = ExtResource("2_wbqvb")
 theme_override_font_sizes/font_size = 18
 text = "Move"
 horizontal_alignment = 1
@@ -85,7 +74,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerLaser"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_kqwun")
+theme_override_fonts/font = ExtResource("2_wbqvb")
 theme_override_font_sizes/font_size = 18
 text = "Shoot Primary (Hold)"
 horizontal_alignment = 1
@@ -114,7 +103,7 @@ alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerRockets"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_jqih2")
+theme_override_fonts/font = ExtResource("2_wbqvb")
 theme_override_font_sizes/font_size = 18
 text = "Use Secondary"
 horizontal_alignment = 1
@@ -143,7 +132,7 @@ alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerExplode"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_xkpqd")
+theme_override_fonts/font = ExtResource("2_wbqvb")
 theme_override_font_sizes/font_size = 18
 text = "Explode Rockets"
 horizontal_alignment = 1
@@ -164,7 +153,7 @@ alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainerBoost"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("SystemFont_ls6i5")
+theme_override_fonts/font = ExtResource("2_wbqvb")
 theme_override_font_sizes/font_size = 18
 text = "Boost"
 horizontal_alignment = 1
@@ -302,6 +291,7 @@ offset_left = 531.0
 offset_top = 324.0
 offset_right = 577.0
 offset_bottom = 347.0
+theme_override_fonts/font = ExtResource("2_wbqvb")
 text = "Music"
 
 [connection signal="value_changed" from="VSlider" to="." method="_on_v_slider_value_changed"]

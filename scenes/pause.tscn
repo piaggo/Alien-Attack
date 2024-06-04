@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3qcgajmhtt2b"]
+[gd_scene load_steps=3 format=3 uid="uid://b3qcgajmhtt2b"]
 
 [ext_resource type="Script" path="res://scripts/pause.gd" id="1_dcujw"]
+[ext_resource type="FontFile" uid="uid://cyiotysjb37x3" path="res://assets/font/Kanit-ExtraBold.ttf" id="2_kcsa4"]
 
 [node name="Pause" type="Control"]
 layout_mode = 3
@@ -31,12 +32,14 @@ alignment = 1
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_kcsa4")
 text = "Resume"
 
 [node name="MenuButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_kcsa4")
 text = "Back to Menu"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
