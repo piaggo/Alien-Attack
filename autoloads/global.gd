@@ -47,7 +47,7 @@ var player_ship_3 = {
 var save_data:SaveData
 var selected_player_ship : Dictionary = player_ship_2.duplicate(true)
 
-var current_scene_transtion : String = "end_cut"
+var current_scene_transtion : String = "end_fade"
 
 func _ready():
 	save_data = SaveData.load_or_create()
