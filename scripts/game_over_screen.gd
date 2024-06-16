@@ -1,5 +1,7 @@
 extends Control
 
+@onready var scene_transistor: Node2D = $SceneTransistor
+
 func set_score(new_score):
 	$Panel/Score.text = "SCORE: " + str(new_score)
 	if new_score > Global.save_data.highscore:
@@ -11,8 +13,9 @@ func set_score(new_score):
 
 
 func _on_retry_button_pressed():
-	get_tree().reload_current_scene()
-
+	scene_transistor.target_scnene = load("res://scenes/game.tscn")
+	scene_transistor.transition()
 
 func _on_give_up_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	scene_transistor.target_scnene = load("res://scenes/main_menu.tscn")
+	scene_transistor.transition()

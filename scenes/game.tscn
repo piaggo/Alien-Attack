@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://c0q42auay2203"]
+[gd_scene load_steps=18 format=3 uid="uid://c0q42auay2203"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_wnldx"]
 [ext_resource type="PackedScene" uid="uid://1508jndsj5v" path="res://scenes/player.tscn" id="2_5a3cq"]
+[ext_resource type="PackedScene" uid="uid://8pw2oc8d1xnb" path="res://scenes/scene_transistor.tscn" id="2_cieht"]
 [ext_resource type="PackedScene" uid="uid://ddh7xwyrrwk0x" path="res://scenes/hud.tscn" id="2_koo4m"]
 [ext_resource type="PackedScene" uid="uid://bqcog6f1i8bxy" path="res://scenes/background.tscn" id="3_agxi4"]
 [ext_resource type="PackedScene" uid="uid://yfyg0je08hvn" path="res://scenes/enemy_spawner.tscn" id="3_n1ed2"]
@@ -24,6 +25,10 @@ size = Vector2(1681.5, 62)
 [node name="Game" type="Node2D"]
 position = Vector2(0, -1)
 script = ExtResource("1_wnldx")
+
+[node name="SceneTransistor" parent="." instance=ExtResource("2_cieht")]
+top_level = true
+selected_animation = "cut"
 
 [node name="UI" type="CanvasLayer" parent="."]
 

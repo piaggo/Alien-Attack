@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bl4lvssnb2ptu"]
+[gd_scene load_steps=6 format=3 uid="uid://bl4lvssnb2ptu"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_k6efg"]
 [ext_resource type="Texture2D" uid="uid://peqgn81ew0ud" path="res://assets/textures/blue_background.png" id="1_spyj0"]
+[ext_resource type="PackedScene" uid="uid://8pw2oc8d1xnb" path="res://scenes/scene_transistor.tscn" id="2_l8qgg"]
 [ext_resource type="FontFile" uid="uid://cyiotysjb37x3" path="res://assets/font/Kanit-ExtraBold.ttf" id="3_jmbsb"]
+[ext_resource type="PackedScene" uid="uid://ddqh8hq16qfs0" path="res://scenes/ship_selector.tscn" id="3_wrorm"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,6 +14,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k6efg")
+
+[node name="SceneTransistor" parent="." instance=ExtResource("2_l8qgg")]
+top_level = true
+target_scnene = ExtResource("3_wrorm")
+selected_animation = "cut"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

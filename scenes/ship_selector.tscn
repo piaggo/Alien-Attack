@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddqh8hq16qfs0"]
+[gd_scene load_steps=11 format=3 uid="uid://ddqh8hq16qfs0"]
 
 [ext_resource type="Texture2D" uid="uid://peqgn81ew0ud" path="res://assets/textures/blue_background.png" id="1_4jllo"]
 [ext_resource type="Script" path="res://scripts/ship_selector.gd" id="1_8p30o"]
+[ext_resource type="PackedScene" uid="uid://8pw2oc8d1xnb" path="res://scenes/scene_transistor.tscn" id="2_qtpsl"]
 [ext_resource type="Texture2D" uid="uid://bcem4wudnfnh5" path="res://assets/textures/ships/playerBlue1.png" id="2_xhfam"]
+[ext_resource type="PackedScene" uid="uid://c0q42auay2203" path="res://scenes/game.tscn" id="3_2mix2"]
 [ext_resource type="FontFile" uid="uid://cyiotysjb37x3" path="res://assets/font/Kanit-ExtraBold.ttf" id="3_5k25w"]
 [ext_resource type="Texture2D" uid="uid://dlkalw8hentlp" path="res://assets/textures/spaceMissiles_004.png" id="4_4tvhk"]
 
@@ -35,6 +37,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8p30o")
+
+[node name="SceneTransistor" parent="." instance=ExtResource("2_qtpsl")]
+top_level = true
+target_scnene = ExtResource("3_2mix2")
+selected_animation = "cut"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

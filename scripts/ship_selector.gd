@@ -13,6 +13,7 @@ var index : int = 0
 @onready var power_name_label: Label = $SecondaryWeapon/VBoxContainer/PowerNameLabel
 @onready var texture_rect_power: TextureRect = $SecondaryWeapon/VBoxContainer/Control/TextureRect
 @onready var power_description: Label = $SecondaryWeapon/VBoxContainer/PowerDescription
+@onready var scene_transistor: Node2D = $SceneTransistor
 
 
 # Called when the node enters the scene tree for the first time.
@@ -32,7 +33,7 @@ func _process(delta: float) -> void:
 func _on_start_button_pressed() -> void:
 	if shiparray[index].unlocked:
 		Global.set_playership(shiparray[index])
-		get_tree().change_scene_to_packed(GAME)
+		scene_transistor.transition()
 
 
 func _on_next_ship_button_pressed() -> void:
@@ -85,4 +86,5 @@ func update_powers() -> void:
 
 
 func _on_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	scene_transistor.target_scnene = load("res://scenes/main_menu.tscn")
+	scene_transistor.transition()

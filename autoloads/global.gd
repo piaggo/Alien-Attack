@@ -47,10 +47,11 @@ var player_ship_3 = {
 var save_data:SaveData
 var selected_player_ship : Dictionary = player_ship_2.duplicate(true)
 
+var current_scene_transtion : String = "end_cut"
+
 func _ready():
 	save_data = SaveData.load_or_create()
 	unlock_ships()
-
 
 func set_playership(selected_ship : Dictionary):
 	selected_player_ship = selected_ship.duplicate(true)
