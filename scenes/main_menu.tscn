@@ -73,6 +73,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="StartButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_jmbsb")
 theme_override_font_sizes/font_size = 32
@@ -117,3 +118,5 @@ text = "Exit"
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ShowControlsButton" to="." method="_on_show_controls_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Highscore" to="." method="_on_highscore_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+
+[editable path="SceneTransistor"]
